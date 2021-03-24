@@ -15,3 +15,5 @@ relation.tex
 *.log
 *.out
 *.code-workspace
+*.snm
+*.nav

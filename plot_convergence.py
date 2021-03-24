@@ -42,7 +42,7 @@ ax.set(yscale="log")
 sns.scatterplot(x='beta', y='Vprec', hue='sigma', data=conv1)
 plt.axvline(0.5, 0, 1,color='Red')
 plt.show()
-conv1['modX'] = conv1['modX']/conv1['sigma']
+conv1['modX'] = conv1['modX']/np.sqrt(conv1['sigma'])
 fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10,5))
 plt.xlabel(r'$\beta$')
 ax.set_ylabel(r"$\epsilon_x$")
