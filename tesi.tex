@@ -1,0 +1,1030 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage{sectsty}
+\usepackage[italian]{babel}
+\usepackage{newlfont}
+\usepackage{color}
+\usepackage{makeidx}
+\usepackage{hyperref}
+\usepackage{amssymb,amsthm, amsfonts,
+	amsmath,amscd, bbm, bm, 
+	delarray,subfigure,xy}
+\usepackage{bbm.sty}
+\usepackage{hyperref}
+\usepackage{cite}
+\usepackage{xy}
+\usepackage{auto-pst-pdf,pstricks}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{accents}
+\numberwithin{equation}{section}
+\numberwithin{section}{chapter}
+
+\makeatletter
+\newcommand\footnoteref[1]{\protected@xdef\@thefnmark{\ref{#1}}\@footnotemark}
+\makeatother
+
+\renewcommand{\qedsymbol}{}
+
+\textwidth=450pt\oddsidemargin=0pt
+\makeindex
+
+
+\begin{document}
+\begin{titlepage}
+%
+%
+% UNA VOLTA FATTE LE DOVUTE MODIFICHE SOSTITUIRE "RED" CON "BLACK" NEI COMANDI \textcolor
+%
+%
+\begin{center}
+{{\Large{\textsc{Alma Mater Studiorum $\cdot$ Universit\`a di Bologna}}}} 
+\rule[0.1cm]{15.8cm}{0.1mm}
+\rule[0.5cm]{15.8cm}{0.6mm}
+\\\vspace{3mm}
+
+{\small{\bf Scuola di Scienze \\ 
+Dipartimento di Fisica e Astronomia\\
+Corso di Laurea in Fisica}}
+
+\end{center}
+
+\vspace{23mm}
+
+\begin{center}\textcolor{black}{
+%
+% INSERIRE IL TITOLO DELLA TESI
+%
+{\LARGE{\bf Correzioni relativistiche negli atomi idrogenoidi e struttura fine}}\\
+}\end{center}
+
+\vspace{50mm} \par \noindent
+
+\begin{minipage}[t]{0.47\textwidth}
+%
+% INSERIRE IL NOME DEL RELATORE CON IL RELATIVO TITOLO DI DOTTORE O PROFESSORE
+%
+{\large{\bf Relatore: \vspace{2mm}
+		\par\textcolor{black}{
+Prof. Roberto Zucchini}\par
+%
+% INSERIRE IL NOME DEL CORRELATORE CON IL RELATIVO TITOLO DI DOTTORE O PROFESSORE
+%
+% SE NON AVETE UN CORRELATORE CANCELLATE LE PROSSIME 3 RIGHE
+%
+%\textcolor{red}{
+%\bf Correlatore: (eventuale)
+%\vspace{2mm}\\
+%Prof./Dott. Nome Cognome}
+}}
+
+\end{minipage}
+%
+\hfill
+%
+\begin{minipage}[t]{0.47\textwidth}\raggedleft \textcolor{black}{
+{\large{\bf Presentata da:
+\vspace{2mm}\\
+%
+% INSERIRE IL NOME DEL CANDIDATO
+%
+Lorenzo Sani}}}
+\end{minipage}
+
+\vspace{40mm}
+
+
+\begin{center}
+%
+% INSERIRE L'ANNO ACCADEMICO
+%
+Anno Accademico \textcolor{black}{ 2018/2019}
+\end{center}
+
+\end{titlepage}
+\tableofcontents
+\hypersetup{pageanchor=false}
+\chapter*{Introduzione}
+
+	Lo studio approfondito degli spettri atomici di atomi idrogenoidi, ossia dotati di un unico elettrone, \`e stato all'origine della fisica atomica e ha permesso di verificare sperimentalmente la validit\`a della teoria quantistica e i limiti dei primi modelli atomici. Il fenomeno fisico in questione \`e l'emissione o l'assorbimento di radiazione elettromagnetica da parte di un gas monoatomico idrogenoide rispettivamente riscaldato o raffreddato. In questo caso, la radiazione elettromagnetica viene emessa o assorbita a frequenze discrete dando origine a spettri a righe. 
+	
+	Bohr fu il primo a proporre un modello teorico quantitativamente in accordo con le prime evidenze sperimentali per spiegare gli spettri a righe di gas monoatomici idrogenoidi; egli propose una semplice teoria atomica semi-classica, che ipotizzava la quantizzazione dei livelli energetici e del momento angolare orbitale. 
+	Successivamente, Schroedinger formul\`o una teoria quantistica pi\`u articolata, capace di riprodurre i risultati di Bohr. Schroedinger utilizzò i livelli energetici e le funzioni d'onda dell'elettrone, che sono rispettivamente gli stati stazionari e le autofunzioni dell'operatore hamiltoniano
+	\begin{equation*}
+		\widehat{H} = \frac{\boldsymbol{\widehat{p}}^2}{2m} - \frac{Ze}{|\mathbf{\widehat{q}|}} ~,
+	\end{equation*}
+	in cui il primo termine rappresenta l'energia cinetica dell'elettrone e il secondo il potenziale coulombiano statico dovuto all'interazione tra la carica elettronica e quella nucleare (viene utilizzato il sistema c.g.s.).
+	Misurazioni pi\`u precise evidenziarono che alcune linee spettrali, che esperimenti meno accurati facevano sembrare singole, erano in realt\`a multipletti di pi\`u linee distinte.
+	Questo fenomeno di suddivisione \`e la cosiddetta struttura fine dell'atomo e non pu\`o essere spiegato dalla teoria di Schroedinger senza includere una serie di effetti relativistici quali \textit{variazione relativistica della massa}, \textit{effetto spin-orbita} e \textit{correzione di Darwin}.
+	
+	Sommerfeld tent\`o di dare una spiegazione a questo fenomeno utilizzando orbite elettroniche ellittiche e quantizzazione di variabili cicliche nell'hamiltoniana. Così facendo, ottenne un'approssimazione dei livelli energetici dell'ordine di grandezza della costante di struttura fine $\alpha$, da lui introdotta, ma ignor\`o il carattere relativistico del problema.
+	La trattazione pi\`u rigorosa, comprensiva di un'analisi relativistica, viene fornita dall'equazione di Dirac, che permette il calcolo delle correzioni ai livelli energetici di Schroedinger, Bohr e Sommerfeld.
+	Un'altra possibile risoluzione del problema \`e data dall'utilizzo della teoria perturbativa. Questo \`e un metodo sistematico di approssimazione che permette di calcolare le correzioni di autovalori e autofunzioni dovute a ``piccole" perturbazioni, si spiegher\`a in che senso, per un problema di Schroedinger per il quale si conoscono le soluzioni esatte.
+	
+	Nonostante la trattazione di Dirac consenta una risoluzione fondamentale e pi\`u completa, si \`e scelto l'approccio perturbativo in quanto ha il vantaggio di essere pi\`u semplice e diretto. Inoltre nel caso di atomi leggeri le differenze tra le due previsioni risultano trascurabili.
+	
+	Nella trattazione di questa tesi, utilizzando la teoria perturbativa indipendente dal tempo degenere, verranno calcolate le correzioni relativistiche dell'ordine perturbativo $\frac{v}{c}$, dove $v$ rappresenta la velocit\`a dell'elettrone e $c$ la velocit\`a della luce nel vuoto.
+	\pagebreak
+	\hypersetup{pageanchor=true}
+	
+\chapter{Correzioni all'operatore hamiltoniano}\label{cha:corr}
+
+	Utilizzando la teoria perturbativa in questo specifico problema si calcolano tre correzioni, ricavate separatamente nelle tre sezioni seguenti, all'operatore hamiltoniano non-relativistico: correzione alla massa relativistica (sez. \ref{sec:corrmv}) $\widehat{H}_{mv}~$, correzione spin-orbita (sez. \ref{sec:corrso}) $\widehat{H}_{so}~$ e correzione di Darwin (sez. \ref{sec:corrda}) $\widehat{H}_{D}~$. 
+	
+\section{Correzione alla massa relativistica}\label{sec:corrmv}
+
+	La prima correzione, che viene presa in esame, riguarda la variazione relativistica della massa dell'elettrone. La velocit\`a di moto dell'elettrone raggiunge circa il $10\%$ della velocit\`a della luce, che implica una variazione in massa sufficientemente importante da dover essere inclusa nella trattazione. L'energia di una particella relativistica di massa $m$ \`e data da
+	\begin{equation}
+	\label{corrmv1}
+	E = mc^2 + K_{rel} ~,
+	\end{equation}
+	dove il primo termine rappresenta l'energia a riposo e il secondo l'energia cinetica relativistica della particella. Considerando anche la relazione relativistica energia-impulso
+	\begin{equation}
+	\label{corrmv2}
+	m^2c^4 = E^2 - \boldsymbol{p}^2c^2 ~,
+	\end{equation}
+	si pu\`o ottenere un'espressione per l'energia cinetica in funzione della massa a riposo della particella e del suo impulso. Infatti utilizzando \eqref{corrmv1} e \eqref{corrmv2} insieme:
+	\begin{align}
+	\label{corrmv3}
+	K_{rel}& = c~(m^2c^2 + \boldsymbol{p}^2)^{1/2} - mc^2\\
+	& = mc^2\bigg(1+\frac{\boldsymbol{p}^2}{m^2c^2}\bigg)^{1/2} - mc^2 ~.\nonumber
+	\end{align}
+	
+	L'equazione \eqref{corrmv3} pu\`o essere utilizzata, nel limite non relativistico $|\boldsymbol{p}|/mc \ll 1$, per dare l'espressione approssimata:
+	\begin{equation}
+	\label{corrmv4}
+	K_{rel} = \frac{\boldsymbol{p}^2}{2m} - \frac{(\boldsymbol{p}^2)^2}{8m^2c^2} + O\bigg(mc^2\bigg(\frac{|\boldsymbol{p}|^2}{mc}\bigg)^3~\bigg) ~,
+	\end{equation}
+	dove si \`e fatto uso della nota espansione di Taylor $\sqrt{1 + x} = 1 + x/2 - x^2/8 + O(x^3)~$. In quest'ultima espressione, il primo termine a secondo membro rappresenta l'usuale energia cinetica classica, mentre il secondo rappresenta il contributo dominante dell'effetto relativistico. L'energia di una particella libera relativistica prende, allora, la forma
+	\begin{equation}
+	\label{corrmv5}
+	E \backsimeq mc^2 +\frac{\boldsymbol{p}^2}{2m} - \frac{(\boldsymbol{p}^2)^2}{8m^2c^2}~,
+	\end{equation}
+	in cui si pu\`o identificare, nel terzo termine a secondo membro dell'equazione, la correzione alla massa relativistica. Si definisce, infine,
+	\begin{equation}
+	\label{corrmv6}
+	\widehat{H}_{mv} = -\frac{\big(\boldsymbol{\widehat{p}}^2\big)^2}{8m^2c^2}
+	\end{equation}
+	come l'operatore di correzione all'hamiltoniano non-relativistico dovuto alla variazione relativistica della massa. 
+	
+	\section{Correzione spin-orbita} \label{sec:corrso}
+	
+	Prima di procedere al calcolo di questa correzione \`e necessario fare alcune considerazioni sui sistemi di riferimento ($SdR$) rotanti in cinematica relativistica. Si definisce il $SdR$ dove l'elettrone si trova a riposo denotandolo con $SdR_{rest}$ e quello del laboratorio con $SdR_{lab}$. In questa sezione verr\`a evidenziato che nel $SdR_{rest}$ l'elettrone risente di un certo campo magnetico dovuto al moto relativo rispetto al nucleo. Sviluppare la teoria sul $SdR_{rest}$ risulta decisamente pi\`u problematico al fine della verifica sperimentale. Si presti attenzione al fatto che la velocit\`a relativa $\boldsymbol{v}$ tra i due sistemi \`e proprio la velocit\`a istantanea dell'elettrone ed \`e continuamente variabile con lo scorrere del tempo.
+	Si definisce con $\boldsymbol{s}$ il momento angolare di spin dell'elettrone nel $SdR_{rest}$. L'evoluzione temporale di $\boldsymbol{s}$ \`e data da
+	\begin{equation}
+	\label{corrso1}
+	\frac{d\boldsymbol{s}}{dt}\bigg\vert_{rest} = -\boldsymbol{\omega}_L \times \boldsymbol{s}~,
+	\end{equation}
+	dove $\frac{d}{dt}\big\vert_{rest}$ rappresenta la derivata fatta rispetto al tempo nel $SdR_{rest}$ e $\boldsymbol{\omega}_L$ \`e la \textit{frequenza di Larmor vettoriale}, la cui espressione dipende dall'accoppiamento dello spin con campi di forza esterni. Nel $SdR_{lab}$, su cui s'intende sviluppare la dinamica dell'elettrone, l'evoluzione temporale di $\boldsymbol{s}$ \`e governata da
+	\begin{equation}
+	\label{corrso2}
+	\frac{d\boldsymbol{s}}{dt}\bigg\vert_{lab} = \frac{d\boldsymbol{s}}{dt}\bigg\vert_{rest} +\boldsymbol{\omega}_T \times \boldsymbol{s}~,
+	\end{equation}
+	dove $\frac{d}{dt}\big\vert_{lab}$ rappresenta la derivata fatta rispetto al tempo nel $SdR_{lab}$ e la \textit{velocit\`a angolare di Thomas} $\boldsymbol{\omega}_T$ \`e la velocit\`a angolare del $SdR_{rest}$ rispetto al $SdR_{lab}$. Inserendo la \eqref{corrso1} nella \eqref{corrso2} si ottiene
+	\begin{equation}
+	\label{corrso3}
+	\frac{d\boldsymbol{s}}{dt}\bigg\vert_{lab} = (\boldsymbol{\omega}_T-\boldsymbol{\omega}_L) \times \boldsymbol{s}~.
+	\end{equation}
+	
+	La funzione hamiltoniana che descrive la dinamica dello spin dell'elettrone nel $SdR_{lab}$ \`e:
+	\begin{equation}
+	\label{corrso4}
+	H_{slab} = (\boldsymbol{\omega}_T-\boldsymbol{\omega}_L) \cdot \boldsymbol{s}~.
+	\end{equation}
+	Per vedere questo, basta richiamare il fatto che
+	\begin{equation}
+	\label{corrso5}
+	\frac{d\boldsymbol{s}}{dt}\bigg\vert_{lab} = \lbrace\boldsymbol{s},~H_{slab}\rbrace_{slab}~,
+	\end{equation}
+	dove $\lbrace~,~\rbrace_{slab}$ sono le \textit{parentesi di Poisson} dello spazio delle fasi dello spin calcolate nel $SdR_{lab}$, la cui azione sui vettori di spin $\boldsymbol{s}$ \`e data da
+	\begin{equation}
+	\label{corrso6}
+	\lbrace\boldsymbol{a}\cdot\boldsymbol{s},~\boldsymbol{b}\cdot\boldsymbol{s}\rbrace_{slab} = \boldsymbol{a}\times\boldsymbol{b}\cdot\boldsymbol{s}~,
+	\end{equation}
+	con $\boldsymbol{a}$ e $\boldsymbol{b}$ vettori arbitrari.\par
+	\noindent\rule[0.1cm]{15.8cm}{0.1mm}
+	\begin{proof}
+	Dalla \eqref{corrso3} si ha
+	\begin{align}
+	\label{corrso7}
+	&\lbrace\boldsymbol{a}\cdot\boldsymbol{s},H_{slab}\rbrace_{slab} = \lbrace\boldsymbol{a}\cdot\boldsymbol{s}, (\boldsymbol{\omega}_T - \boldsymbol{\omega}_L) \cdot \boldsymbol{s}\rbrace\\
+	&\hspace{2cm}=\boldsymbol{a}\times(\boldsymbol{\omega}_T - \boldsymbol{\omega}_L) \cdot \boldsymbol{s} = \boldsymbol{a} \cdot (\boldsymbol{\omega}_T - \boldsymbol{\omega}_L) \times \boldsymbol{s} = \boldsymbol{a} \cdot \frac{d\boldsymbol{s}}{dt}\bigg\vert_{lab}~,\nonumber
+	\end{align}
+	che dimostra che la \eqref{corrso5} risulta verificata se l'espressione per $H_{slab}$ \`e data da \eqref{corrso4}.
+	\end{proof}
+	\noindent\rule[0.1cm]{15.8cm}{0.1mm}
+
+	Per ottenere un'espressione pi\`u esplicita per $H_{slab}$ \`e necessario fornire espressioni pi\`u esplicite per $\boldsymbol{\omega}_L$ e $\boldsymbol{\omega}_T~$. Si ricorda che una particella generica di carica elettrica $e$ e spin $\boldsymbol{s}$ possiede un momento magnetico $\boldsymbol{\mu}$ dato da
+	\begin{equation}
+	\label{corrso8}
+	\boldsymbol{\mu} = \frac{eg\boldsymbol{s}}{2mc}~,
+	\end{equation}
+	dove $g$ rappresenta il rapporto giromagnetico della particella. Nel $SdR_{rest}$ la dinamica dello spin \`e governata dall'\textit{equazione di Larmor}
+	\begin{equation}
+	\label{corrso9}
+	\frac{d\boldsymbol{s}}{dt}\bigg\vert_{rest} = \boldsymbol{\mu} \times \boldsymbol{\mathcal{H}}_{rest}~,
+	\end{equation}
+	dove $\boldsymbol{\mathcal{H}}_{rest}$ \`e il campo magnetico nel $SdR_{rest}$, percepito dalla particella. Inserendo $\eqref{corrso8}$ in \eqref{corrso9} si ottiene un'espressione che si pu\`o scrivere in modo da ottenere \eqref{corrso1} con \textit{frequenza di Larmor vettoriale} data da
+	\begin{equation}
+	\label{corrso10}
+	\boldsymbol{\omega}_{L} = \frac{eg\boldsymbol{\mathcal{H}}_{rest}}{2mc}~.
+	\end{equation}
+	Utilizzando le \textit{trasformazioni di Lorentz} della relativit\`a ristretta, \`e possibile ottenere l'espressione di $\boldsymbol{\mathcal{H}}_{rest}$ in funzione del campo magnetico $\boldsymbol{\mathcal{H}}_{lab}$ e del campo elettrico $\boldsymbol{\mathcal{E}}_{lab}~$:
+	\begin{equation}
+	\label{corrso11}
+	\boldsymbol{\mathcal{H}}_{rest}  = \boldsymbol{\mathcal{H}}_{lab} - \frac{\boldsymbol{v}_{lab}}{c} \times \boldsymbol{\mathcal{E}}_{lab} + O\bigg(\frac{\boldsymbol{v}_{lab}^2}{c^2}\bigg)~,
+	\end{equation}
+	dove la velocit\`a $v_{lab}$ relativa tra il $SdR_{rest}$ e il $SdR_{lab}$. Inserendo \eqref{corrso11} in \eqref{corrso10} si ottiene
+	\begin{equation}
+	\label{corrso12}
+	\boldsymbol{\omega}_{L} \backsimeq \frac{eg}{2mc}(\boldsymbol{\mathcal{H}}_{lab} - \frac{\boldsymbol{v}_{lab}}{c} \times \boldsymbol{\mathcal{E}}_{lab})~.
+	\end{equation}
+	La \textit{velocit\`a angolare di Thomas}, che \`e di natura puramente cinematica, \`e data da
+	%%correggi dimensionalità di O(v^2/c^2)
+	\begin{equation}
+	\label{corrso13}
+	\boldsymbol{\omega}_T = -\frac{1}{2}\frac{\boldsymbol{v}_{lab} \times \boldsymbol{a}_{lab}}{c^2} + O\bigg(\frac{\boldsymbol{v}_{lab}^2}{c^2}\bigg)~,
+	\end{equation}
+	dove $\boldsymbol{a}_{lab}$ \`e l'accelerazione dell'elettrone rispetto al $SdR_{lab}$. $\boldsymbol{a}_{lab}$ \`e dovuta alla \textit{forza di Lorentz} e in termini di $\boldsymbol{\mathcal{E}}_{lab}$ e $\boldsymbol{\mathcal{H}}_{lab}$ ha espressione:
+	\begin{equation}
+	\label{corrso14}
+	\boldsymbol{a}_{lab} = \frac{e}{m}\bigg(\boldsymbol{\mathcal{E}}_{lab} + \frac{\boldsymbol{v}_{lab}}{c} \times \boldsymbol{\mathcal{H}}_{lab}\bigg)~.
+	\end{equation}
+	Sostituendo \eqref{corrso14} in \eqref{corrso13} si ottiene un'espressione pi\`u esplicita per la \textit{velocit\`a angolare di Thomas} in termini di $\boldsymbol{v}_{lab}$ e $\boldsymbol{\mathcal{E}}_{lab}$:
+	\begin{equation}
+	\label{corrso15}
+	\boldsymbol{\omega}_T \backsimeq -\frac{e}{2mc}\frac{\boldsymbol{v}_{lab}}{c} \times \boldsymbol{\mathcal{E}}_{lab}~, 
+	\end{equation}
+	dove vengono trascurati i contributi del campo magnetico dell'ordine di $O(\frac{\boldsymbol{v}_{lab}^2}{c^2})$.
+	Inserendo ora \eqref{corrso12} e \eqref{corrso15} in \eqref{corrso4}, si ottiene l'espressione esplicita dell'hamiltoniana che descrive la dinamica dello spin in termini dei campi $\boldsymbol{\mathcal{E}}_{lab}$ e $\boldsymbol{\mathcal{H}}_{lab}$:
+	\begin{equation}
+	\label{corrso16}
+	H_{slab} = \frac{e}{2mc}\bigg(- g\boldsymbol{\mathcal{H}}_{lab} + (g-1)\frac{\boldsymbol{v}_{lab}}{c} \times \boldsymbol{\mathcal{E}}_{lab} \bigg) \cdot \boldsymbol{s}~.
+	\end{equation}
+	
+	Uno ione idrogenoide, con numero atomico $Z$, possiede un solo elettrone di carica elettrica $-e$, perci\`o si ha $\boldsymbol{v}_{lab} = \boldsymbol{v}$,
+	\begin{align}
+	\boldsymbol{\mathcal{E}}_{lab}& = Ze\frac{\boldsymbol{x}}{|\boldsymbol{x}|^3}~,\label{corrso17}\\
+	\boldsymbol{\mathcal{H}}_{lab}& = \boldsymbol{0}~\label{corrso18}
+	\end{align}
+	e $g \backsimeq 2~$. Ponendo queste espressioni all'interno di \eqref{corrso16} si ottiene
+	\begin{equation}
+	\label{corrso19}
+	H_{slab} \backsimeq H_{so} = - \frac{Ze^2}{2mc^2|\boldsymbol{x}|^3}\boldsymbol{v} \times \boldsymbol{x} \cdot \boldsymbol{s} = \frac{Ze^2}{2m^2c^2|\boldsymbol{x}|^3}\boldsymbol{l} \cdot \boldsymbol{s}~,
+	\end{equation}
+	dove $\boldsymbol{l} = m\boldsymbol{x}\times\boldsymbol{v}$ \`e il momento angolare orbitale. Essendo presente nell'espressione \eqref{corrso19} il prodotto $\boldsymbol{l} \cdot \boldsymbol{s}$, $H_{slab}$ rappresenta proprio l'accoppiamento spin-orbita. L'inclusione del prodotto $\boldsymbol{\omega}_T \times \boldsymbol{s}$, chiamato \textit{termine di Thomas}, in \eqref{corrso2} produce un effetto che prende il nome di \textit{precessione di Thomas}. \`E da notare che ignorare questo effetto avrebbe portato, nell'addendo di destra tra le parentesi di \eqref{corrso16}, ad avere un fattore $g \backsimeq 2$ invece che $g-1 \backsimeq 1$, cio\`e un risultato doppio rispetto a quello correttamente calcolato. 
+	
+	Includere nella trattazione l'\textit{interazione spin-orbita}  dell'elettrone in meccanica quantistica si riduce ad aggiungere all'operatore hamiltoniano non-relativistico il termine
+	\begin{equation}
+	\label{corrso20}
+	\widehat{H}_{so} = \frac{Ze^2}{2m^2c^2}\frac{1}{|\widehat{\boldsymbol{q}}|^3}\widehat{\boldsymbol{l}} \cdot \widehat{\boldsymbol{s}}~.
+	\end{equation}
+	
+		
+\section{Correzione di Darwin} \label{sec:corrda}
+
+	Gli elettroni, per l'elettrodinamica classica, sono considerati oggetti puntiformi, ma questo non implica il fatto che sia possibile localizzarli in un punto preciso dello spazio. Infatti non vi \`e alcuna evidenza sperimentale che possa giustificarne la localizzabilit\`a in un punto. Questa particolare propriet\`a si attribuisce allo \textit{zit\-ter\-be\-we\-gung}: oscillazioni quantistiche attorno alla posizione media. La teoria quantistica dei campi \`e in grado di spiegare in modo esauriente questo fenomeno. Fluttuazioni quantistiche in energia di un elettrone portano alla produzione di una serie di coppie virtuali elettrone-positrone con una certa vita media $\varDelta t \backsim \hslash/\varDelta E \backsim \hslash/mc^2$, a cui \`e permesso percorrere una distanza massima $\varDelta x \backsim c \varDelta t \backsim \hslash/mc = \lambda_C$, dove $\lambda_C$ \`e la \textit{lunghezza d'onda di Compton}. Questo significa che l'elettrone non pu\`o essere localizzato in una sfera di raggio minore di $r_c = \lambda_C$. Questo porta in modo inevitabile a produrre un termine correttivo per il potenziale coulombiano.
+	
+	Con questa premessa si definisce l'energia potenziale efficace $U_{eff}(\boldsymbol{x})$ al punto $\boldsymbol{x}$ di un elettrone come la media su tutte le deviazioni:
+	\begin{equation}
+	\label{corrda1}
+	U_{eff}(\boldsymbol{x}) = \langle U_C(\boldsymbol{x} + \boldsymbol{\xi})\rangle~,
+	\end{equation}
+	dove $U_C(\boldsymbol{x})$ rappresenta l'usuale energia potenziale coulombiana calcolata nel punto $\boldsymbol{x}$ e $\boldsymbol{\xi}$ \`e la deviazione dalla posizione $\boldsymbol{x}$ nelle regione sferica di raggio $r_c$. Evidenze sperimentali giustificano l'assunzione che gli elettroni siano oggetti isotropi, quindi si pu\`o assumere che la distribuzione della variabile $\boldsymbol{\xi}$ sia anch'essa isotropa, cio\`e a simmetria sferica. Sotto questa ipotesi \`e possibile sviluppare $U_{eff}$ fino all'ordine $O({r_c}^2)$:
+	\begin{equation}
+	\label{corrda2}
+	U_{eff}(\boldsymbol{x}) = U_C(\boldsymbol{x}) + \frac{\gamma {r_c}^2}{8}\boldsymbol{\nabla}^2U_C(\boldsymbol{x}) + O({r_c}^3)~,
+	\end{equation}
+	dove $\gamma$ \`e un fattore numerico di ordine 1, che pu\`o essere calcolato solamente essendo in possesso di un modello della non localizzabilit\`a dell'elettrone.\par
+	\noindent\rule[0.1cm]{15.8cm}{0.1mm}
+	\begin{proof}
+		Viene divisa la dimostrazione in passaggi per chiarezza.
+		\begin{enumerate} [leftmargin=0pt, itemindent=2.67\parindent]
+			\item [\textit{Parte 1.}] Espandendo in serie di Taylor $U_C(\boldsymbol{x} + \boldsymbol{\xi})$ nel punto $\boldsymbol{x}$ si ottiene
+			\begin{equation}
+			\label{corrda3}
+			U_C(\boldsymbol{x} + \boldsymbol{\xi}) = U_C(\boldsymbol{x}) + \boldsymbol{\xi} \cdot \boldsymbol{\nabla}U_C(\boldsymbol{x}) + \frac{1}{2} \boldsymbol{\xi}\boldsymbol{\xi} \cdot\cdot \boldsymbol{\nabla}\boldsymbol{\nabla}U_C(\boldsymbol{x}) + O(|\boldsymbol{\xi}|^3)~.
+			\end{equation}
+			Utilizzando la \eqref{corrda1} si pu\`o scrivere:
+			\begin{equation}
+			\label{corrda4}
+			U_{eff}(\boldsymbol{x}) = \langle 1 \rangle U_C(\boldsymbol{x}) + \langle \boldsymbol{\xi} \rangle \cdot \boldsymbol{\nabla} U_C(\boldsymbol{x}) + \frac{1}{2}\langle \boldsymbol{\xi}\boldsymbol{\xi} \rangle \cdot \cdot \boldsymbol{\nabla}\boldsymbol{\nabla} U_C(\boldsymbol{x}) + O({r_c}^3)~.
+			\end{equation}
+		\item [\textit{Parte 2.}] Avendo assunto l'isotropia della distribuzione di $\boldsymbol{\xi}$, ecco che
+		\begin{subequations}
+		\begin{align}
+			&\langle 1 \rangle  = 1~,\label{corrda5:first}\\
+			&\langle \boldsymbol{\xi} \rangle = \boldsymbol{0}~,\label{corrda5:second}\\
+			&\langle \boldsymbol{\xi}\boldsymbol{\xi} \rangle = (\gamma{r_c}^3/4)\boldsymbol{1}~,\label{corrda5:third}
+		\end{align}
+		\end{subequations}
+		dove $\gamma$ \`e una costante adimensionale di ordine 1, come verr\`a dimostrato. Sia $\boldsymbol{n}$ un vettore unitario variabile. Ovviamente, essendo l'intero angolo solido di $4\pi$, si ha che
+		\begin{equation}
+		\label{corrda6}
+		\oint d^2n = 4\pi~,
+		\end{equation}
+		dove con $d^2n$ s'intende l'elemento infinitesimo della superficie sferica della sfera $|\boldsymbol{n}|=1$.
+		Preso un qualsiasi vettore $\boldsymbol{a}$ non nullo, vale inoltre
+		\begin{equation}
+		\label{corrda7}
+		\oint d^2n~\boldsymbol{n} \cdot \boldsymbol{a} = 0~.
+		\end{equation}
+		Infatti, questo integrale \`e uno scalare, risulta esprimibile solo in termini di $\boldsymbol{a}$ e non esistono scalari diversi da zero che possano essere costruiti solamente con $\boldsymbol{a}$. Essendo $\boldsymbol{a}$ un vettore arbitrario, \eqref{corrda7} implica che
+		\begin{equation}
+		\label{corrda8}
+		\oint d^2n~\boldsymbol{n} = \boldsymbol{0}~.
+		\end{equation}
+		Qualunque coppia di vettori $\boldsymbol{a}$, $\boldsymbol{b}$ si ha
+		\begin{equation}
+		\label{corrda9}
+		\oint d^2n~\boldsymbol{n}\boldsymbol{n} \cdot \cdot~\boldsymbol{ab} = \alpha~\boldsymbol{a} \cdot \boldsymbol{b}~,
+		\end{equation}
+		dove $\alpha$ \`e un fattore numerico.  Infatti, quest'integrale \`e uno scalare, \`e esprimibile solo in termini di $\boldsymbol{a}$ e $\boldsymbol{b}$ e lo scalare generico che pu\`o essere costruito con $\boldsymbol{a}$ e $\boldsymbol{b}$ \`e esattamente quello nella forma sopra. Il coefficiente $\alpha$ pu\`o essere calcolato come segue. Sia $\boldsymbol{k}$ un vettore unitario, scelto come asse polare, allora
+		\begin{equation}
+		\label{corrda10}
+		\oint d^2n~\boldsymbol{nn} \cdot \cdot \boldsymbol{kk} = \int_{0}^{\pi} d\vartheta~\sin\vartheta\int_{-\pi}^{\pi} d\varphi~\cos^2\vartheta = \frac{2\pi}{3}[-\cos^3\vartheta]_0^{\pi} = \frac{4\pi}{3}~,
+		\end{equation}
+		cos\`i risulta $\alpha = 4\pi/3~$. Dato che i vettori $\boldsymbol{a}$, $\boldsymbol{b}$ sono arbitrari, \eqref{corrda10} implica
+		\begin{equation}
+		\label{corrda11}
+		\oint d^2n~\boldsymbol{nn} = \frac{4\pi}{3}\boldsymbol{1}~.
+		\end{equation}
+		La distribuzione $\rho(\boldsymbol{\xi})$, data l'isotropia, risulta dipendere solo dal modulo $|\boldsymbol{\xi}|$, quindi $\rho(\boldsymbol{\xi}) = r(|\boldsymbol{\xi}|)$. Avendo $|\boldsymbol{\xi}| \leq r_c$, \`e ovvio che $r(|\boldsymbol{\xi}|) \backsimeq 0$ per $|\boldsymbol{\xi}| \gg r_c$. Scrivendo, ora, $\boldsymbol{\xi} = \xi\boldsymbol{n}$, dove $\xi = |\boldsymbol{\xi}|$ e $\boldsymbol{n} = \boldsymbol{\xi}_1$, per ogni funzione $f(\boldsymbol{\xi})$, si ha
+		\begin{equation}
+		\label{corrda12}
+		\langle f(\boldsymbol{\xi})\rangle = \oint d^2n \int_{0}^{\infty}d\xi~\xi^2r(|\boldsymbol{\xi}|)f(\xi\boldsymbol{n})~.
+		\end{equation}
+		La distribuzione \`e necessariamente normalizzata, per cui
+		\begin{equation}
+		\label{corrda13}
+		\langle 1\rangle = \oint d^2n\int_{0}^{\infty}d\xi~\xi^2r(|\boldsymbol{\xi}|) = 1~,
+		\end{equation}
+		che implica \eqref{corrda5:first}. Da \eqref{corrda8}, si ottiene
+		\begin{equation}
+		\label{corrda14}
+		\langle\boldsymbol{\xi}\rangle = \oint d^2n~\boldsymbol{n}\int_{0}^{\infty}d\xi~\xi^3r(|\boldsymbol{\xi}|) = \boldsymbol{0}~,
+		\end{equation}
+		dimostrando \eqref{corrda5:second}. Si pu\`o pensare a quest'ultimo risultato come l'annullamento a due a due delle deviazioni per ogni direzione. Infine, da \eqref{corrda11}, si ricava
+		\begin{equation}
+		\label{corrda15}
+		\langle\boldsymbol{\xi\xi}\rangle = \oint d^2n~\boldsymbol{nn}\int_{0}^{\infty}d\xi~\xi^4r(|\boldsymbol{\xi}|) = \frac{\gamma {r_c}^2}{4}\boldsymbol{1}~,
+		\end{equation}
+		dove $\gamma$ \`e la costante adimensionale
+		\begin{equation}
+		\label{corrda16}
+		\gamma = \frac{16\pi}{3{r_c}^2}\int_{0}^{\infty}d\xi~\xi^4r(|\boldsymbol{\xi}|)~,
+		\end{equation}	
+		che dimostra \eqref{corrda5:third}.
+		\item [\textit{Parte 3.}] Inserendo \eqref{corrda5:first}-\eqref{corrda5:third} in \eqref{corrda4}, si ottiene
+		\begin{equation}
+		\label{corrda17}
+		U_{eff}(\boldsymbol{x}) = U_C(\boldsymbol{x}) + \frac{\gamma {r_c}^2}{8}\boldsymbol{1} \cdot \cdot \boldsymbol{\nabla\nabla}U_C(\boldsymbol{x}) + O({r_c}^3)~.
+		\end{equation}	
+		Essendo $\boldsymbol{1}\cdot\cdot\boldsymbol{\nabla\nabla} = \boldsymbol{\nabla}^2$, segue \eqref{corrda2}.
+		\end{enumerate}
+	\end{proof}
+	\noindent\rule[0.1cm]{15.8cm}{0.1mm}\par
+	L'elettrone di un atomo idrogenoide ha energia potenziale coulombiana data da 
+	\begin{equation}
+	\label{corrda18}
+	U_C(\boldsymbol{x}) = -\frac{Ze^2}{|\boldsymbol{x}|}~.
+	\end{equation}
+	Poich\`e $\boldsymbol{\nabla}^2(1/|\boldsymbol{x}|) = - 4\pi \delta(\boldsymbol{x})$, risulta
+	\begin{equation}
+	\label{corrda19}
+	\boldsymbol{\nabla}^2U_C(\boldsymbol{x}) = -Ze^2\boldsymbol{\nabla}^2\frac{1}{|\boldsymbol{x}|} = 4\pi Ze^2\delta(\boldsymbol{x})~.
+	\end{equation}
+	Utilizzando la relazione \eqref{corrda17}, si trova
+	\begin{equation}
+	\label{corrda20}
+	U_{eff}(\boldsymbol{x}) = U_C(\boldsymbol{x}) + \gamma\frac{\pi {r_c}^2Ze^2}{2}\delta(\boldsymbol{x}) + O({r_c}^3)~.
+	\end{equation}
+	
+	Dall'analisi appena fatta, ci si aspetta che in un atomo idrogenoide l'energia potenziale efficace, avvertita dall'elettrone, sia della forma di \eqref{corrda20}, a causa della nuvola di particelle virtuali attorno all'elettrone stesso, dove $r_c = \lambda_c$ e $\boldsymbol{x}$ viene sostituito dall'operatore posizione $\widehat{\boldsymbol{q}}$. Con questo livello di approfondimento non \`e possibile calcolare il valore della costante $\gamma$, infatti sarebbe necessaria la teoria quantistica avanzata, che d\`a $\gamma = 1$. Si trova infine
+	\begin{equation}
+	\label{corrda21}
+	\widehat{H}_D = \frac{\pi\hslash^2Ze^2}{2m^2c^2}\delta(\widehat{\boldsymbol{q}})~.
+	\end{equation}
+	Questo contributo viene chiamato \textit{termine di Darwin}.
+	
+
+	\chapter{Stima delle scale energetiche delle perturbazioni}\label{cha:scen}
+	\numberwithin{equation}{chapter}
+	Prima di procedere con il calcolo dei termini correttivi all'hamiltoniana imperturbata, utilizzando la teoria perturbativa, \`e necessario stimare l'ordine di grandezza di ogni contributo, come richiesto dalla teoria stessa. Un hamiltoniana imperturbata $\widehat{H}_u$ \`e caratterizzata, in generale, da due scale energetiche. La prima, $\overline{H}_u$, indica l'ordine di grandezza degli autovalori dell'energia imperturbati. La seconda, $\overline{\Delta H}_u$, esprime l'ordine di grandezza della differenza tra due livelli energetici consecutivi. Una certa perturbazione, $\widehat{W}$, \`e caratterizzata da una scala energetica $\overline{W}$. Affinch\'e $\widehat{W}$ possa essere considerata una perturbazione ``piccola" di $\widehat{H}_u$ \`e necessario che
+	\begin{subequations}
+		\begin{align}
+		&\overline{H}_u \gg \overline{W}~,\label{scen1:first}\\
+		&\overline{\Delta H}_u \gg \overline{W}~.\label{scen1:second}
+		\end{align}
+	\end{subequations}
+	Quando entrambe queste condizioni risultano verificate allora \`e giustificato l'utilizzo della teoria perturbativa.
+	
+	La scala energetica $\overline{H}_{mv}$, che caratterizza il termine di variazione relativistica della massa si pu\`o calcolare come segue. Dalla \eqref{corrmv6} si evince che l'energia della variazione di massa, $~H_{mv}$, \`e legata all'energia cinetica dell'elettrone, $~p^2/2m$, da $H_{mv} \backsim (p^2/2m)^2/mc^2$. Per un atomo idrogenoide l'energia di Bohr risulta $p^2/2m \backsim mc^2(Z\alpha)^2$, dove $\alpha = e^2/\hslash c \backsim 1/137.06$ \`e la \textit{costante di struttura fine}. Quindi,
+	\begin{equation}
+	\label{scen2}
+	\overline{H}_{mv} \backsim mc^2(Z\alpha)^4~.
+	\end{equation}
+	
+	La scala energetica $\overline{H}_{so}$, caratterizzante l'accoppiamento spin-orbita, si pu\`o stimare come segue. Dalla \eqref{corrso20}, l'energia di accoppiamento spin-orbita \`e approssimativamente $H_{so} = (Ze^2/m^2c^2)ls/r^3$, dove con $l$ e $s$ vengono indicati rispettivamente i moduli di $\boldsymbol{l}$ e di $\boldsymbol{s}$. In questo caso, $r \backsim r_B/Z$, con $r_B$ raggio di Bohr. Allora, $\overline{H}_{so} \backsim Z^4e^2\hslash^2/m^2c^2{r_B}^3 = mc^2Z^4(e^2/\hslash c)(\hslash/mcr_B)^3~$. Si richiama il fatto che la \textit{lunghezza d'onda di Compton} $\lambda_C = \hslash/mc$ e che la \textit{costante di struttura fine} $\alpha = e^2/\hslash c$; di conseguenza il \textit{raggio di Bohr} $r_B = \hslash^2/me ^2 = \lambda_C/\alpha$. Infine si ha
+	\begin{equation}
+	\label{scen3}
+	\overline{H}_{so} \backsim mc^2(Z\alpha)^4~.
+	\end{equation}
+	
+	La stima della scala energetica $\overline{H}_D$ caratterizzante il termine di Darwin risulta essere pi\`u delicata, a causa della presenza della delta di Dirac. Dalla \eqref{corrda21} l'energia di Darwin pu\`o essere stimata come $H_D \backsim (Z\hslash^2e^2/m^2c^2)|\phi(\boldsymbol{0})|^2$, dove $\phi$ \`e la funzione d'onda appropriata dell'elettrone. Questa stima risulta diversa da zero solo per stati con $l = 0$, perch\'e per stati con $l > 0$ la funzione d'onda dell'elettrone svanisce nell'origine. Per gli stati non banali si ha $\phi(\boldsymbol{0}) \backsim (Z/r_B)^{3/2}$. Quindi, $H_D \backsim Z^4e^2\hslash^2/m^2c^2{r_B}^3$, avendo $\phi(\boldsymbol{0}) \backsim (Z/r_B)^{3/2}$, e $H_D \backsim H_{so}$. Ricordando i calcoli del paragrafo precedente, si ha
+	\begin{equation}
+	\label{scen4}
+	\overline{H}_D \backsim mc^2(Z\alpha)^4~.
+	\end{equation}
+	
+	Dalle \eqref{scen2}-\eqref{scen4}, risulta che le scale energetiche dei termini variazione relativistica della massa, accoppiamento spin-orbita e Darwin soddisfano
+	\begin{equation}
+	\label{scen5}
+	\overline{H}_{mv} \backsim \overline{H}_{so} \backsim \overline{H}_D \backsim mc^2(Z\alpha)^4~.
+	\end{equation}
+	Quindi, \`e fisicamente legittimo definire l'\textit{hamiltoniana di struttura fine} come
+	\begin{equation}
+	\label{scen6}
+	\widehat{H}_{fs} = \widehat{H}_{mv} + \widehat{H}_{so} + \widehat{H}_D~,
+	\end{equation}
+	dove vengono incorporati tutti i termini considerati. L'hamiltoniana completa di un atomo idrogenoide, comprendente hamiltoniana imperturbata e l'\textit{hamiltoniana di struttura fine}, \`e quindi
+	\begin{equation}
+	\label{scen7}
+	\widehat{H} = \widehat{H}_C + \widehat{H}_{fs}~.
+	\end{equation}
+	
+	Per quanto si \`e visto in precedenza nella stima di $\overline{H}_{mv}$, l'energia cinetica di un atomo idrogenoide \`e $mv^2/2 \backsim mc^2(Z\alpha)^2$. Generalmente atomi con un solo elettrone sono leggeri, per cui $Z\alpha \ll 1$, o anche $Z \ll 1/\alpha \backsim 137.06$. Questo comporta che $mv^2/2 \ll mc^2$, ovvero si sta lavorando in un regime non relativistico, in cui l'\textit{hamiltoniana di struttura fine} $\widehat{H}_{fs} \backsim mc^2(Z\alpha)^4$ risulta una piccola perturbazione del termine coulombiano $\widehat{H}_C$. Per rafforzare quest'ultimo assunto, si pu\`o notare che i termini correttivi in \eqref{corrmv6}, \eqref{corrso18} e \eqref{corrda21} tendono ad annullarsi come la quantit\`a $1/c^2$ per $c\rightarrow\infty$ e possono essere considerati effetti relativistici. Per atomi leggeri, l'operatore hamiltoniano assume, allora, la seguente forma
+	\begin{equation}
+	\label{scen8}
+	\widehat{H} = \widehat{H}_u + \widehat{W}~.
+	\end{equation}
+	
+	In \eqref{scen8} l'operatore hamiltoniano imperturbato $\widehat{H}_u$ \`e dato dal termine di Coulomb $\widehat{H}_C$, di cui si conoscono sia le autofunzioni sia le scale e i gap energetici
+	\begin{equation}
+	\label{scen9}
+	\overline{H}_u \backsim \overline{\Delta H}_u \backsim mc^2(Z\alpha)^2~,
+	\end{equation}
+	mentre il termine perturbativo $\widehat{W}$ \`e dato dall'\textit{hamiltoniana di struttura fine}, che ne determina la scala energetica
+	\begin{equation}
+	\label{scen10}
+	\overline{W} \backsim mc^2(Z\alpha)^4~.
+	\end{equation}
+	Dal confronto tra le scale energetiche, formalmente \eqref{scen1:first} e \eqref{scen1:second}, risulta chiaro che $\overline{H}_u \backsim \overline{\Delta H}_u \backsim mc^2(Z\alpha)^2 \gg \overline{W} \backsim mc^2(Z\alpha)^4$, per via del fatto che $Z\alpha \ll 1$. Vengono, quindi, soddisfatte le richieste per l'applicazione della teoria perturbativa.
+	
+	\chapter{Risoluzione del problema con la teoria perturbativa}\label{cha:teoper}
+	\numberwithin{equation}{section}
+	In questo capitolo viene utilizzata la teoria perturbativa per risolvere il problema in esame, scelta gi\`a discussa nell'introduzione. I presupposti necessari per risolvere il problema per mezzo della teoria perturbativa sono evidenziati nei capitoli precedenti. Si proceder\`a quindi solamente nell'implementazione e nell'applicazione con i dovuti calcoli.
+	
+	\section{Implementazione della teoria perturbativa}\label{sec:impteo}
+	Quando si desidera implementare l'algoritmo perturbativo, \`e necessario iniziare con la risoluzione del problema di Schroedinger imperturbato. In questo caso specifico si tratta di trovare le soluzioni del problema familiare dello ione idrogenoide, che sono note e gi\`a disponibili.
+	
+	Una base ortonormale di autoket dell'hamiltoniana imperturbata $\widehat{H}_u$ \`e la base ortonormale standard \mbox{$|n,l,m_l,1/2,m_s\rangle_C$} di autoket simultanei dell'operatore hamiltoniano di Coulomb $\widehat{H}_C$, del quadrato $\widehat{l^2}$ e della 0-ima componente\footnote{Viene, qui, utilizzata la base sferica orientata $\boldsymbol{e}_\alpha$, per cui la 0-ima componente risulta uguale alla terza componente nella base cartesiana $\boldsymbol{e}_i$: $\widehat{l}_0 = \widehat{l}_3$ e $\widehat{l}_{\pm1} = \widehat{l}_1 \pm i\widehat{l}_2$.} $\widehat{l_0}$ del momento orbitale  e del quadrato $\widehat{s^2}$ e della 0-ima componente $\widehat{s_0}$ del momento angolare di spin. Si pu\`o subito notare che l'operatore hamiltoniano di Coulomb \`e uno scalare\footnote{In meccanica quantistica, un certo operatore (scalare) $\widehat{A}$ \`e chiamato ``uno scalare" rispetto all'operatore di momento angolare orbitale $\widehat{\boldsymbol{l}}$ se commuta con ogni sua componente. Per cui vale $[\widehat{l_i},\widehat{A}] = 0$ per $i=0,\pm1$. Questa definizione vale analogamente per i momenti $\widehat{\boldsymbol{s}}$ e $\widehat{\boldsymbol{j}}$.} rispetto ai momenti angolare orbitale $\widehat{\boldsymbol{l}}$ e di spin $\widehat{\boldsymbol{s}}$. Quindi \`e opportuno scegliere come set completo di operatori autoaggiunti commutanti quello che comprende $\widehat{l^2}$, $\widehat{l_0}$, $\widehat{s^2}$, $\widehat{s_0}$ e $\widehat{H}_C$ stesso. Questa base di autoket, associata all'insieme completo di operatori autoaggiunti commutanti scritti sopra, \`e quindi una \textit{rappresentazione di Heisenberg}\footnote{Quando viene aggiunto all'operatore hamiltoniano un insieme (anche vuoto) di operatori autoaggiunti in modo tale da generare un insieme completo di operatori autoaggiunti commutanti, l'unica base ortonormale associata, a meno di una scelta di fase, viene chiamata \textit{rappresentazione di Heisenberg}.}. Inoltre, \`e etichettata dal numero quantico principale $n = 1,2,3,\dots~$, numero quantico orbitale $l=0,1,2,\dots,n-1~$, numero quantico magnetico $m_l=-l,-l+1,\dots,l-1,l~$ e numero quantico della proiezione dello spin $m_s=\pm1/2$. Viene ignorata la parte continua dello spettro in quanto non contribuisce alle energie qui considerate. Quindi
+	\begin{equation}
+	\label{impteo1}
+	|n,l,m_l,1/2,m_s;u\rangle=|n,l,m_l,1/2,m_s\rangle_C~.
+	\end{equation}
+	L'equazione agli autovalori imperturbata assume la forma
+	\begin{equation}
+	\label{impteo2}
+	\widehat{H}_u|n,l,m_l,1/2,m_s;u\rangle=|n,l,m_l,1/2,m_s;u\rangle h(n;u)~,
+	\end{equation}
+	dove l'autovalore imperturbato dell'energia $h(n;u)$ \`e l'$n$-esimo livello di Bohr
+	\begin{equation}
+	\label{impteo3}
+	h(n;u) = -\frac{mc^2(Z\alpha)^2}{2n^2}~.
+	\end{equation}
+	Si posso scrivere le seguenti relazioni agli autovalori
+	\begin{subequations}
+		\begin{align}
+		&\widehat{l^2}|n,l,m_l,1/2,m_s;u\rangle = |n,l,m_l,1/2,m_s;u\rangle\hslash^2l(l+1)~,\label{impteo4:first}\\
+		&\widehat{l_0}|n,l,m_l,1/2,m_s;u\rangle = |n,l,m_l,1/2,m_s;u\rangle\hslash m_l~,\label{impteo4:second}\\
+		&\widehat{s^2}|n,l,m_l,1/2,m_s;u\rangle = |n,l,m_l,1/2,m_s;u\rangle 3\hslash^2/4~,\label{impteo4:third}\\
+		&\widehat{s_0}|n,l,m_l,1/2,m_s;u\rangle = |n,l,m_l,1/2,m_s;u\rangle\hslash m_s~.\label{impteo4:fourth}
+		\end{align}
+	\end{subequations}
+	Le relazioni di ortonormalit\`a e completezza per gli autoket $|n,l,m_l,1/2,m_s;u\rangle$ sono
+	\begin{subequations}
+		\begin{align}
+		&\langle n',l',{m_l}',1/2,{m_s}';u|n,l,m_l,1/2,m_s;u\rangle = \delta_{n',n}\delta_{l',l}\delta_{{m_l}',m_l}\delta_{{m_s}',m_s}~,\label{impteo5:first}\\
+		&\sum\nolimits_{n=1}^{\infty}\sum\nolimits_{l=0}^{n-1}\sum\nolimits_{m_l=-l}^{l}\sum\nolimits_{m_s=-1/2}^{1/2} |n,l,m_l,1/2,m_s;u\rangle\langle n,l,m_l,1/2,m_s;u| = \widehat{1}~.\label{impteo5:second}
+		\end{align}
+	\end{subequations}
+	Gli autovalori dell'energia sono dati da \eqref{impteo3}. La degenerazione di $h(n;u)$ \`e data da $2n^2$, dove il fattore 2 \`e dovuto alla degenerazione nella proiezione dello spin. Da qui segue che \`e necessaria la teoria perturbativa indipendente dal tempo degenere.
+	
+	\`E ora necessario definire un set completo di operatori autoaggiunti commutanti, in modo da determinare gli autoket associati agli autovalori perturbati pi\`u opportuni.	L'hamiltoniana completa $\widehat{H} = \widehat{H}_C + \widehat{H}_{fs}$ non \`e uno scalare n\`e per $\widehat{\boldsymbol{l}}$, n\`e per $\widehat{\boldsymbol{s}}$, ma lo \`e per il momento angolare totale dell'elettrone $\widehat{\boldsymbol{j}} = \widehat{\boldsymbol{l}} + \widehat{\boldsymbol{s}}$. La causa di ci\`o \`e la presenza del prodotto $\widehat{\boldsymbol{l}}\cdot\widehat{\boldsymbol{s}}$ nel termine di spin-orbita $\widehat{H}_{so}$ all'interno dell'\textit{hamiltoniana di struttura fine} $\widehat{H}_{fs}$. Infatti questo non commuta con $\widehat{\boldsymbol{l}}$ o $\widehat{\boldsymbol{s}}$, ma proprio con $\widehat{\boldsymbol{j}}$. L'insieme completo di operatori autoaggiunti commutanti con $\widehat{H}$ pu\`o essere scelto cosicch\`e comprenda $\widehat{l^2}$, $\widehat{s^2}$, $\widehat{j^2}$, $\widehat{j_0}$ e $\widehat{H}$ stesso.
+	\newpage
+	\noindent\rule[0.1cm]{15.8cm}{0.1mm}
+	\begin{proof}
+	Si pone l'attenzione sul fatto che $\widehat{\boldsymbol{q}}$, $\widehat{\boldsymbol{p}}$, $\widehat{\boldsymbol{l}}$, $\widehat{\boldsymbol{s}}$ sono tutti operatori vettoriali rispetto a $\widehat{\boldsymbol{j}}$, inoltre $\widehat{\boldsymbol{q}^2}$, $\widehat{\boldsymbol{p}^2}$, $\widehat{\boldsymbol{l}^2}$, $\widehat{\boldsymbol{s}^2}$ e $\widehat{\boldsymbol{l}}\cdot\widehat{\boldsymbol{s}}$ sono operatori scalari rispetto a $\widehat{\boldsymbol{j}}$. Ora, dato che $\widehat{H}$ \`e esprimibile come una funzione di $\widehat{\boldsymbol{q}^2}$, $\widehat{\boldsymbol{p}^2}$ e $\widehat{\boldsymbol{l}}\cdot\widehat{\boldsymbol{s}}$, $\widehat{H}$ \`e necessariamente un operatore scalare di $\widehat{\boldsymbol{j}}$, inoltre commuta con $\widehat{\boldsymbol{l}^2}$ e $\widehat{\boldsymbol{s}^2}$. 
+	
+	Si ricordano, infatti, le regole di commutazione standard per il momento angolare totale
+	\begin{subequations}
+		\begin{align}
+		\bigg[\widehat{j}_i, \widehat{l}_j\bigg] = i\hslash\sum_{k=1}^{3}\epsilon_{ijk}\widehat{l}_k~,\label{impteo6:first}\\
+		\bigg[\widehat{j}_i, \widehat{s}_j\bigg] = i\hslash\sum_{k=1}^{3}\epsilon_{ijk}\widehat{s}_k~.\label{impteo6:second}
+		\end{align}
+	\end{subequations}
+	Di conseguenza
+	\begin{align}
+	\label{impteo7}
+	\bigg[\widehat{j}_i, \widehat{\boldsymbol{l}}\cdot\widehat{\boldsymbol{s}}\bigg] &= \bigg[\widehat{j}_i, \sum_{m=1}^{3}\widehat{l}_m\widehat{s}_m\bigg] = \sum_{m=1}^{3} \bigg[\widehat{j}_i, \widehat{l}_m\widehat{s}_m\bigg]\\
+	&= \sum_{m=1}^{3} \bigg\lbrace\bigg[\widehat{j}_i, \widehat{l}_m\bigg]\widehat{s}_m + \widehat{l}_m\bigg[\widehat{j}_i, \widehat{s}_m\bigg]\bigg\rbrace\nonumber\\
+	&= i\hslash\sum_{m=1}^{3} \bigg\lbrace \sum_{k=1}^{3}\epsilon_{imk}\widehat{l}_k\widehat{s}_m + \widehat{l}_m\sum_{k=1}^{3}\epsilon_{imk} \widehat{s}_k\bigg\rbrace\nonumber\\
+	&= i\hslash\sum_{m=1}^{3}\sum_{k=1}^{3} \bigg\lbrace \epsilon_{imk}\widehat{l}_k\widehat{s}_m + \epsilon_{imk}\widehat{l}_m\widehat{s}_k\bigg\rbrace = 0~.\nonumber
+	\end{align}
+	Si nota, inoltre, che $\delta(\widehat{\boldsymbol{q}})$, presente nel termine di Darwin $\widehat{H}_D$, \`e indipendente da $\widehat{\boldsymbol{s}}$. Inoltre commuta con $\widehat{\boldsymbol{l}}$ come provato:
+	\begin{equation}
+	\label{impteo8}
+	\big[\widehat{\boldsymbol{l}}, \delta(\widehat{\boldsymbol{q}})\big] = \big[\widehat{\boldsymbol{q}} \times \widehat{\boldsymbol{p}}, \delta(\widehat{\boldsymbol{q}})\big] = \widehat{\boldsymbol{q}} \times \big[\widehat{\boldsymbol{p}}, \delta(\widehat{\boldsymbol{q}})\big] = -i\hslash\widehat{\boldsymbol{q}} \times (\boldsymbol{\nabla}\delta)(\widehat{\boldsymbol{q}}) = 0~.
+	\end{equation}
+	L'ultimo passaggio \`e giustificato da
+	\begin{align}
+	\label{impteo9}
+	\int d^3x~\boldsymbol{x} \times (\boldsymbol{\nabla}\delta(\boldsymbol{x}))f(\boldsymbol{x}) &= \int d^3x~\boldsymbol{\nabla} \times (f(\boldsymbol{x})~\boldsymbol{x}) \delta(\boldsymbol{x})\\
+	&=\int d^3x~\lbrace \boldsymbol{\nabla}f(\boldsymbol{x}) \times \boldsymbol{x} + f(\boldsymbol{x})\boldsymbol{\nabla} \times \boldsymbol{x}\rbrace \delta(\boldsymbol{x}) = 0~,\nonumber
+	\end{align}
+	dove $f$ \`e una funzione di prova.
+	\end{proof}
+	\noindent\rule[0.1cm]{15.8cm}{0.1mm}\\
+	La base ortonormale di autoket $|n,l,j,1/2,m_j\rangle$, associata al set completo di operatori autoaggiunti commutanti composto da $\widehat{H}$, $\widehat{l^2}$, $\widehat{s^2}$, $\widehat{j^2}$, $\widehat{j_0}$, \`e una \textit{rappresentazione di Heisenberg}. Inoltre \`e etichettata dal numero quantico principale $n=0,1,\dots~$, numero quantico orbitale $l=0,1,2,\dots,n-1~$, numero quantico di momento angolare totale $j=-|l+1/2|,|l+1/2|+1,\dots,l+1/2~$ e numero quantico della proiezione del momento angolare totale $m_j=-l,-l+1,\dots,l-1,l$. Seguono le relazioni agli autovalori
+	\begin{subequations}
+		\begin{align}
+		&\widehat{l^2}|n,l,j,1/2,m_j\rangle = |n,l,j,1/2,m_j\rangle\hslash^2l(l+1)~,\label{impteo10:first}\\
+		&\widehat{j^2}|n,l,j,1/2,m_j\rangle = |n,l,j,1/2,m_j\rangle\hslash^2j(j+1)~,\label{impteo10:second}\\
+		&\widehat{s^2}|n,l,j,1/2,m_j\rangle = |n,l,j,1/2,m_j\rangle 3\hslash^2/4~,\label{impteo10:third}\\
+		&\widehat{j_0}|n,l,j,1/2,m_j\rangle = |n,l,j,1/2,m_j\rangle\hslash m_j~.\label{impteo10:fourth}
+		\end{align}
+	\end{subequations}
+	Di seguito le relazioni di ortonormalit\`a e completezza per i ket $|n,l,j,1/2,m_j\rangle$
+	\begin{subequations}
+		\begin{align}
+		&\langle n',l',j',1/2,{m_j}'|n,l,j,1/2,m_j\rangle = \delta_{n',n}\delta_{l',l}\delta_{j',j}\delta_{{m_j}',m_j}~,\label{impteo11:first}\\
+		&\sum\nolimits_{n=1}^{\infty}\sum\nolimits_{l=0}^{n-1}\sum\nolimits_{j=|l-1/2|}^{l+1/2}\sum\nolimits_{m_j=-l}^{l} |n,l,j,1/2,m_j\rangle\langle n,l,j,1/2,m_j| = \widehat{1}~.\label{impteo11:second}
+		\end{align}
+	\end{subequations}
+	
+	All'ordine perturbativo pi\`u basso, gli autovalori e autoket esatti dell'energia hanno espansione
+	\begin{equation}
+	\label{impteo10}
+	h(n,l,1/2,j) = h(n;u) + h(n,l,1/2,j;1) + \dots
+	\end{equation}
+	e
+	\begin{equation}
+	\label{impteo11}
+	|n,l,1/2,j,m_j\rangle = |n,l,1/2,j,m_j;0\rangle + \dots~.
+	\end{equation}
+	L'autoproiettore di $h(n;u)$ \`e
+	\begin{equation}
+	\label{impteo12}
+	\widehat{P}_u(n) = \sum\nolimits_{l=0}^{n-1}\sum\nolimits_{m_l=-l}^{l}\sum\nolimits_{m_s=-1/2}^{1/2} |n,l,m_l,1/2,m_s;u\rangle\langle n,l,m_l,1/2,m_s;u|~.
+	\end{equation}
+	Le correzioni di ordine $O({\overline{H}_{fs}}^1)$ di $h(n,l,1/2,j)$ e di ordine ${\overline{H}_{fs}}^0$ di $|n,l,1/2,j,m_j\rangle$ si possono calcolare risolvendo il problema perturbativo degenere, che, nel caso in esame, si riduce all'equazione agli autovalori seguente
+	\begin{equation}
+	\label{impteo13}
+	\widehat{P}_u(n)\widehat{H}_{fs}\widehat{P}_u(n)|n,l,1/2,j,m_j;0\rangle = |n,l,1/2,j,m_j;0\rangle h(n,l,1/2,j;1)~.
+	\end{equation}
+
+	\section{Applicazione della teoria perturbativa}\label{sec:appteo}
+	Il calcolo per l'operatore perturbativo $\widehat{P}(n)\widehat{H}_{fs}\widehat{P}(n)$ \`e laborioso, dato che l'\textit{hamiltoniana di struttura fine} $\widehat{H}_{fs}$ ha una struttura complicata. Il primo passo che si compie \`e quello di notare la possibilit\`a di fattorizzare gli autoket di Coulomb in parte radiale e  parte angolare $|n,l;r\rangle$ e $|l,m_l,1/2,m_s;a\rangle$,
+	\begin{equation}
+	\label{appteo1}
+	|n,l,m_l,1/2,m_s\rangle_C = |n,l;r\rangle|l,m_l,1/2,m_s;a\rangle~,
+	\end{equation}
+	che implica, attraverso \eqref{impteo1},
+	\begin{equation}
+	\label{appteo2}
+	|n,l,m_l,1/2,m_s;u\rangle = |n,l;r\rangle|l,m_l,1/2,m_s;a\rangle~.
+	\end{equation}
+	Considerando i termini da calcolare, questa fattorizzazione semplifica considerevolmente il calcolo. I ket $|l,m_l,1/2,m_s;a\rangle$, con $l=0,1,\dots, n-1$ fissato, $m_l=-l,-l+1,\dots,l-1,l~$, $m_s=-1/2,1/2~$, generano un sottospazio estorto $\mathcal{E}(l,1/2;a)$ dello spazio di Hilbert angolare e sono di questo una base ortonormale. Dalla teoria della somma dei momenti angolari in meccanica quantistica, \`e nota l'esistenza di una base ortonormale $|l,1/2,j,m_j;a\rangle$, con $j = |l-1/2|,l+1/2$, $m_j = -j,-j+1,\dots,j-1,j$, costituita di autoket simultanei di $\widehat{l^2}$, $\widehat{s^2}$, $\widehat{j^2}$, $\widehat{j_0}$. Utilizzano quest'ultima si possono definire i ket
+	\begin{equation}
+	\label{appteo3}
+	|n,l,1/2,j,m_j;u\rangle=|n,l;r\rangle|l,1/2,j,m_j;a\rangle~.
+	\end{equation}
+	Fissato un valore di $n$, risulta chiaro che i ket $|n,l,1/2,j,m_j;u\rangle$ generano un'ulteriore base ortonormale di autoket dell'hamiltoniana imperturbata $\widehat{H}_u$ appartenente all'autovalore imperturbato $h(n;u)$. Per questi ket l'equazione agli autovalori si legge
+	\begin{equation}
+	\label{appteo4}
+	\widehat{H}_u|n,l,1/2,j,m_j;u\rangle=|n,l,1/2,j,m_j;u\rangle h(n;u)~.
+	\end{equation}
+	Le relazioni agli autovalori per gli altri operatori sono le seguenti
+	\begin{subequations}
+		\begin{align}
+		&\widehat{l^2}|n,l,1/2,j,m_j;u\rangle=|n,l,1/2,j,m_j;u\rangle\hslash^2l(l+1)~,\label{appteo5:first}\\
+		&\widehat{s^2}|n,l,1/2,j,m_j;u\rangle=|n,l,1/2,j,m_j;u\rangle3\hslash^2/4~,\label{appteo5:second}\\
+		&\widehat{j^2}|n,l,1/2,j,m_j;u\rangle=|n,l,1/2,j,m_j;u\rangle\hslash^2j(j+1)~,\label{appteo5:third}\\
+		&\widehat{j_0}|n,l,1/2,j,m_j;u\rangle=|n,l,1/2,j,m_j;u\rangle\hslash m_j~.\label{appteo5:fourth}
+		\end{align}
+	\end{subequations}
+	Le nuove relazioni di ortonormalit\`a e completezza prendono la forma
+	\begin{subequations}
+		\begin{align}
+		&\langle n',l',1/2,j',{m_j}';u|n,l,1/2,jm_j;u\rangle = \delta_{n',n}\delta_{l',l}\delta_{j',j}\delta_{{m_j}',m_j}~,\label{appteo6:first}\\
+		&\sum\nolimits_{n=1}^{\infty}\sum\nolimits_{l=0}^{n-1}\sum\nolimits_{j=|l-1/2|}^{l+1/2}\sum\nolimits_{m_j=-j}^j|n,l,1/2,j,m_j;u\rangle\langle n,l,1/2,j,m_j;u| = \widehat{1}~.\label{appteo6:second}
+		\end{align}
+	\end{subequations}
+	Il calcolo dell'operatore perturbativo mostra che esso risulta diagonale nella base\\\noindent$|n,l,1/2,j,m_j;u\rangle$,
+	\begin{align}
+	\label{appteo7}
+	&\widehat{P}_u(n)\widehat{H}_{fs}\widehat{P}_u(n) = \sum\nolimits_{l=0}^{n-1}\sum\nolimits_{j=|l-1/2|}^{l+1/2}\sum\nolimits_{m_j=-j}^j|n,l,1/2,j,m_j;u\rangle\\
+	&\hspace{0.5cm}\bigg\lbrace-\frac{1}{2mc^2}\bigg\langle n,l;r\bigg|\bigg(h(n;u)\widehat{1}+\frac{Ze^2}{\widehat{r}}\bigg)^2\bigg|n,l;r\bigg\rangle + \frac{\hslash^2Ze^2}{4m^2c^2}\bigg\langle n,l;r\bigg|\frac{\delta(\widehat{r})}{\widehat{r}^2}\bigg|n,l;r\bigg\rangle\nonumber\\
+	&\hspace{1cm}+ \frac{\hslash^2Ze^2}{4m^2c^2}\bigg\langle n,l;r\bigg|\frac{1}{\widehat{r}^3}\bigg|n,l;r\bigg\rangle[j(j+1) - l(l+1) -3/4]\bigg\rbrace\langle n,l,1/2,j,m_j;u|~,\nonumber
+	\end{align}
+	dove $\widehat{r} = |\widehat{\boldsymbol{q}}|$.\\
+	\rule[0.1cm]{15.8cm}{0.1mm}
+	\begin{proof}
+		Viene divisa la dimostrazione in passaggi per chiarezza.
+		\begin{enumerate}[leftmargin=0pt, itemindent=2.67\parindent]
+		\item[\textit{Parte 1.}] L'operatore perturbativo $\widehat{P}_u(n)\widehat{H}_{fs}\widehat{P}_u(n)$ \`e
+		\begin{equation}
+		\label{appteo8}
+		\widehat{P}_u(n)\widehat{H}_{fs}\widehat{P}_u(n) = \sum\nolimits_{x=mv,so,D}\widehat{P}_u(n)\widehat{H}_x\widehat{P}_u(n)~.
+		\end{equation}
+		Dalla \eqref{impteo12}, i tre contributi dovuti alla somma nell'equazione precedente sono gli elementi di matrice delle hamiltoniane $\widehat{H}_{mv}$, $\widehat{H}_{so}$, $\widehat{H}_D$ sugli autostati imperturbati dell'energia etichettati da $n,l,m_l,1/2,m_s$. L'elemento di matrice dell'hamiltoniana di variazione di massa $\widehat{H}_{mv}$ si pu\`o esprimere, considerando \eqref{corrmv6} e l'identit\`a $\widehat{H}_u + \widehat{H}_C = \widehat{\boldsymbol{p}}^2/2m + Ze^2/|\widehat{\boldsymbol{q}}|$ e la relazione agli autovalori \eqref{impteo2}, come
+		\begin{align}
+		\label{appteo9}
+		&\langle n,l',{m_l}',1/2,{m_s}';u|\widehat{H}_{mv}|n,l,m_l,1/2,m_s;u\rangle\\
+		&\hspace{1.5cm}= -\frac{1}{2mc^2}\bigg\langle n,l',{m_l}',1/2,{m_s}';u\bigg|\bigg(\frac{\widehat{\boldsymbol{p}}^2}{2m}\bigg)^2\bigg|n,l,m_l,1/2,m_s;u\bigg\rangle\nonumber\\
+		&\hspace{1.5cm}=-\frac{1}{2mc^2}\bigg\langle n,l',{m_l}',1/2,{m_s}';u\bigg|\bigg(\widehat{H}_C + \frac{Ze^2}{|\widehat{\boldsymbol{q}}|}\bigg)^2\bigg|n,l,m_l,1/2,m_s;u\bigg\rangle\nonumber\\
+		&\hspace{1.5cm}=-\frac{1}{2mc^2}\bigg\langle n,l',{m_l}',1/2,{m_s}';u\bigg|\bigg(\widehat{H}_C + \frac{Ze^2}{\widehat{r}}\bigg)^2\bigg|n,l,m_l,1/2,m_s;u\bigg\rangle\nonumber\\
+		&\hspace{1.5cm}=-\frac{1}{2mc^2}\bigg\langle n,l',{m_l}',1/2,{m_s}';u\bigg|\bigg(h(n;u)\widehat{1} + \frac{Ze^2}{\widehat{r}}\bigg)^2\bigg|n,l,m_l,1/2,m_s;u\bigg\rangle~.\nonumber
+		\end{align}
+		Dalla \eqref{corrso18}, gli elementi di matrice dell'hamiltoniana di spin-orbita si scrivono
+		\begin{align}
+		\label{appteo10}
+		&\langle n,l',{m_l}',1/2,{m_s}';u|\widehat{H}_{so}|n,l,m_l,1/2,m_s;u\rangle\\
+		&\hspace{3cm}= -\frac{Ze^2}{2m^2c^2}\bigg\langle n,l',{m_l}',1/2,{m_s}';u\bigg|\frac{1}{|\widehat{\boldsymbol{q}}|^3}\widehat{\boldsymbol{l}} \cdot \widehat{\boldsymbol{s}}\bigg|n,l,m_l,1/2,m_s;u\bigg\rangle\nonumber\\
+		&\hspace{3cm}= -\frac{Ze^2}{2m^2c^2}\bigg\langle n,l',{m_l}',1/2,{m_s}';u\bigg|\frac{1}{\widehat{r}^3}\widehat{\boldsymbol{l}} \cdot \widehat{\boldsymbol{s}}\bigg|n,l,m_l,1/2,m_s;u\bigg\rangle~.\nonumber
+		\end{align}
+		Dalla \eqref{corrda21} e dall'identit\`a $\delta(\widehat{\boldsymbol{q}}) = \delta(|\widehat{\boldsymbol{q}}|)/2\pi|\widehat{\boldsymbol{q}}|^2$, gli elementi di matrice dell'hamiltoniana di Darwin risultano
+		\begin{align}
+		\label{appteo11}
+		&\langle n,l',{m_l}',1/2,{m_s}';u|\widehat{H}_D|n,l,m_l,1/2,m_s;u\rangle\\
+		&\hspace{3cm}= -\frac{\pi\hslash^2Ze^2}{2m^2c^2}\bigg\langle n,l',{m_l}',1/2,{m_s}';u\bigg|\delta(|\widehat{\boldsymbol{q}}|)\bigg|n,l,m_l,1/2,m_s;u\bigg\rangle\nonumber\\
+		&\hspace{3cm}= -\frac{\hslash^2Ze^2}{4m^2c^2}\bigg\langle n,l',{m_l}',1/2,{m_s}';u\bigg|\frac{\delta(|\widehat{\boldsymbol{q}}|)}{|\widehat{\boldsymbol{q}}|^2}\bigg|n,l,m_l,1/2,m_s;u\bigg\rangle\nonumber\\
+		&\hspace{3cm}= -\frac{\hslash^2Ze^2}{4m^2c^2}\bigg\langle n,l',{m_l}',1/2,{m_s}';u\bigg|\frac{\delta(\widehat{r})}{\widehat{r}^2}\bigg|n,l,m_l,1/2,m_s;u\bigg\rangle~.\nonumber
+		\end{align}
+		Le relazioni \eqref{appteo9}-\eqref{appteo11} suggeriscono che, ai fini del calcolo di $\widehat{P}_u(n)\widehat{H}_{fs}\widehat{P}_u(n)$, si possa fattorizzare ognuno dei tre termini compongono $\widehat{H}_{fs}$ come il prodotto di un termine radiale e un termine angolare
+		\begin{equation}
+		\label{appteo12}
+		\widehat{H}_x = \widehat{H}_{x;r}\widehat{H}_{x;a},~~~x=mv,~so,~D~.
+		\end{equation}
+		Scrivendoli esplicitamente si ha
+		\begin{align}
+		&{\widehat{H}}_{mv;r} = -\frac{1}{2mc^2}\bigg(h(n;u)\widehat{1} + \frac{Ze^2}{\widehat{r}}\bigg)^2~,\label{appteo13:first}\\
+		&{\widehat{H}}_{so;r} = \frac{Ze^2}{2m^2c^2}\frac{1}{\widehat{r}^3}~,\label{appteo13:second}\\
+		&{\widehat{H}}_{D;r} = \frac{\hslash^2Ze^2}{2m^2c^2}\frac{\delta(\widehat{r})}{\widehat{r}^2}~,\label{appteo13:third}\\
+		&{\widehat{H}}_{mv;a} = \widehat{1}~,\label{appteo13:fourth}\\
+		&{\widehat{H}}_{so;a} = \widehat{\boldsymbol{l}} \cdot \widehat{\boldsymbol{s}}~,\label{appteo13:fifth}\\
+		&{\widehat{H}}_{D;a} = \widehat{1}~,\label{appteo13:sixth}
+		\end{align}
+		dove si nota facilmente che la sola componente angolare non banale \`e quella spin-orbita.
+		\item[\textit{Parte 2.}] Si pu\`o ora procedere alla scomposizione dell'autoproiettore $\widehat{P}_u(n)$, utilizzando \eqref{appteo3}		
+		\begin{align}
+		\label{appteo14}
+		\widehat{P}_u(n) &=\sum\nolimits_{l=0}^{n-1}\sum\nolimits_{m_l=-l}^l\sum\nolimits_{m_s=-1/2}^{1/2}|n,l,m_l,1/2,m_s;u\rangle\langle n,l,m_l,1/2,m_s;u|\\
+		&=\sum\nolimits_{l=0}^{n-1}\sum\nolimits_{m_l=-l}^l\sum\nolimits_{m_s=-1/2}^{1/2}|n,l;r\rangle|l,m_l,1/2;a\rangle\langle n,l;r|\langle l,m_l,1/2,m_s;a|\nonumber\\
+		&=\sum\nolimits_{l=0}^{n-1}|n,l;r\rangle\langle n,l;r|\widehat{P}(l,1/2;a)~,\nonumber
+		\end{align}
+		dove
+		\begin{equation}
+		\label{appteo15}
+		\widehat{P}(l,1/2;a) = \sum\nolimits_{m_l=-l}^l\sum\nolimits_{m_s=-1/2}^{1/2}|l,m_l,1/2,m_s;a\rangle\langle l,m_l,1/2,m_s;a|~.
+		\end{equation}
+		Data la \eqref{appteo12}, i tre contributi a membro destro di \eqref{appteo8} si scompongono nel modo seguente
+		\begin{align}
+		\label{appteo16}
+		\widehat{P}_u(n)\widehat{H}_x\widehat{P}_u(n) &= \sum\nolimits_{l'=0}^{n-1}|n,l';r\rangle\langle n,l';r|\widehat{P}(l',1/2;a)\\
+		&\hspace{3cm}\widehat{H}_{x;r}\widehat{H}_{x;a}\sum\nolimits_{l=0}^{n-1}|n,l;r\rangle\langle n,l;r|\widehat{P}(l,1/2;a)\nonumber\\
+		&=\sum\nolimits_{l,l'= 0}^{n-1}|n,l';r\rangle\langle n,l';r|\widehat{H}_{x;r}|n,l;r\rangle\langle n,l;r|\nonumber\\
+		&\hspace{3cm}\widehat{P}(l',1/2;a)\widehat{H}_{x;a}\widehat{P}(l,1/2;a)~.\nonumber
+		\end{align}
+		Gli operatori $\widehat{H}_{x;a}$ sono funzioni di $\widehat{\boldsymbol{l}}$ e $\widehat{\boldsymbol{s}}$, quindi lo spazio $\mathcal{E}(l,1/2;a)$, generato dai ket $|l,m_l,1/2,m_s;a\rangle$, per valori fissati di $l$ e $s$, \`e invariante sotto l'azione dei $\widehat{H}_{x;a}$. Inoltre gli spazi $\mathcal{E}(l,1/2;a)$ e $\mathcal{E}(l',1/2;a)$ sono ortogonali con $l\neq l'$ (coincidono altrimenti), per cui
+		\begin{equation}
+		\label{appteo17}
+		\widehat{P}(l',1/2;a)\widehat{P}(l,1/2;a) = \delta_{l',l}\widehat{P}(l,1/2;a)~.
+		\end{equation}
+		Ne segue
+		\begin{align}
+		\label{appteo18}
+		&\widehat{P}(l',1/2;a)\widehat{H}_{x;a}\widehat{P}(l,1/2;a)
+		\\
+		&\hspace{3cm}=\widehat{H}_{x;a}\widehat{P}(l',1/2;a)\widehat{P}(l,1/2;a) = \delta_{l',l}\widehat{H}_{x;a}\widehat{P}(l,1/2;a)~.\nonumber
+		\end{align}
+		Utilizzando, ora, \eqref{appteo16} e \eqref{appteo18} \`e possibile semplificare ulteriormente l'espressione per $\widehat{P}_u(n)\widehat{H}_x\widehat{P}_u(n)$
+		\begin{align}
+		\label{appteo19}
+		&\widehat{P}_u(n)\widehat{H}_x\widehat{P}_u(n)\\
+		&\hspace{1.5cm}=\sum\nolimits_{l,l'= 0}^{n-1}|n,l';r\rangle\langle n,l';r|\widehat{H}_{x;r}|n,l;r\rangle\langle n,l;r|\delta_{l',l}\widehat{H}_{x;a}\widehat{P}(l,1/2;a)\nonumber\\
+		&\hspace{1.5cm}=\sum\nolimits_{l=0}^{n-1}|n,l;r\rangle\langle n,l;r|\widehat{H}_{x;r}|n,l;r\rangle\langle n,l;r|\widehat{H}_{x;a}\widehat{P}(l,1/2;a)~.\nonumber
+		\end{align}
+		\item[\textit{Parte 3.}] Ora si procede con il calcolo dei fattori angolari dati dai $\widehat{H}_{x;a}\widehat{P}(l,1/2;a)$ che compaiono nella \eqref{appteo19} utilizzando le espressioni \eqref{appteo13:fourth}-\eqref{appteo13:sixth}. Completando il passaggio dai ket $|l,m_l,1/2,m_s;a\rangle$ ai ket $|l,1/2,j,m_j;a\rangle$ per ogni valore fissato di $l$, si pu\`o scrivere il proiettore $\widehat{P}(l,1/2;a)$ come
+		\begin{align}
+		\label{appteo20}
+		\widehat{P}(l,1/2;a) &=\sum\nolimits_{m_l=-l}^l\sum\nolimits_{m_s=-1/2}^{1/2}|l,m_l,1/2,m_s;a\rangle\langle l,m_l,1/2,m_s;a|\\
+		&=\sum\nolimits_{j=|l-1/2|}^{l+1/2}\sum\nolimits_{m_j=-j}^j|l,1/2,j,m_j;a\rangle\langle l,1/2,j,m_j;a|~.\nonumber 
+		\end{align}
+		Si trova allora facilmente
+		\begin{align}
+		\label{appteo21}
+		&\widehat{\boldsymbol{l}} \cdot \widehat{\boldsymbol{s}}~\widehat{P}(l,1/2;a)\\
+		&~=\frac{1}{2}[\widehat{j^2} - \widehat{l^2} - \widehat{s^2}] \sum\nolimits_{j=|l-1/2|}^{l+1/2}\sum\nolimits_{m_j=-j}^j|l,1/2,j,m_j;a\rangle\langle l,1/2,j,m_j;a|\nonumber\\
+		&~=\sum\nolimits_{j=|l-1/2|}^{l+1/2}\sum\nolimits_{m_j=-j}^j|l,1/2,j,m_j;a\rangle\frac{\hslash^2}{2}[j(j+1) - l(l+1) - 3/4]\langle l,1/2,j,m_j;a|~.\nonumber
+		\end{align}
+		Sfruttando, ora, \eqref{appteo20} e \eqref{appteo21}, \`e possibile esprimere $\widehat{P}_u(n)\widehat{H}_{fs}\widehat{P}_u(n)$ come
+		\begin{align}
+		\label{appteo22}
+		&\widehat{P}_u(n)\widehat{H}_{fs}\widehat{P}_u(n)\\
+		&\hspace{1.5cm}=-\sum\nolimits_{l=0}^{n-1}\sum\nolimits_{j=|l-1/2|}^{l+1/2}\sum\nolimits_{m_j=-j}^j|n,l;r\rangle|l,1/2,j,m_j;a\rangle\nonumber\\
+		&\hspace{5cm}\langle n,l;r|\widehat{H}_{mv;r}|n,l;r\rangle\langle n,l;r|\langle l,1/2,j,m_j;a|\nonumber\\
+		&\hspace{1.5cm}\hphantom{=} +\sum\nolimits_{l=0}^{n-1}\sum\nolimits_{j=|l-1/2|}^{l+1/2}\sum\nolimits_{m_j=-j}^j|n,l;r\rangle|l,1/2,j,m_j;a\rangle\nonumber\\
+		&\hspace{2.1cm}\langle n,l;r|\widehat{H}_{so;r}|n,l;r\rangle\frac{\hslash^2}{2}[j(j+1) - l(l+1) - 3/4]\langle n,l;r|\langle l,1/2,j,m_j;a|\nonumber\\
+		&\hspace{1.5cm}\hphantom{=} +\sum\nolimits_{l=0}^{n-1}\sum\nolimits_{j=|l-1/2|}^{l+1/2}\sum\nolimits_{m_j=-j}^j|n,l;r\rangle|l,1/2,j,m_j;a\rangle\nonumber\\
+		&\hspace{5cm}\langle n,l;r|\widehat{H}_{D;r}|n,l;r\rangle\langle n,l;r|\langle l,1/2,j,m_j;a|~.\nonumber
+		\end{align}
+		Combinando le tre sommatorie e utilizzando la fattorizzazione in \eqref{appteo3} si ottiene
+		\begin{align}
+		\label{appteo23}
+		&\widehat{P}_u(n)\widehat{H}_{fs}\widehat{P}_u(n)\\
+		&\hspace{0.5cm}=-\sum\nolimits_{l=0}^{n-1}\sum\nolimits_{j=|l-1/2|}^{l+1/2}\sum\nolimits_{m_j=-j}^j|n,l,1/2,j,m_j;u\rangle\nonumber\\
+		&\hspace{1cm}\bigg\lbrace\langle n,l;r|\widehat{H}_{mv;r}|n,l;r\rangle + \langle n,l;r|\widehat{H}_{D;r}|n,l;r\rangle\nonumber\\
+		&\hspace{2cm}+\frac{\hslash^2}{2}\langle n,l;r|\widehat{H}_{so;r}|n,l;r\rangle[j(j+1) - l(l+1) - 3/4]\bigg\rbrace\langle n,l,1/2,j,m_j;u|~.\nonumber
+		\end{align}
+		Inserendo \eqref{appteo13:first}-\eqref{appteo13:third} in \eqref{appteo23}, si ha \eqref{appteo7}.	
+	\end{enumerate}
+	\end{proof}
+	\noindent\rule[0.1cm]{15.8cm}{0.1mm}\par
+	
+	Il contributo al primo ordine perturbativo $h(n,l,1/2,j;1)$ all'autovalore perturbato $h(n,l,1/2,j)$ risulta perci\`o
+	\begin{align}
+	\label{appteo24}
+	h(n,l,1/2,j;1) &=-\frac{1}{2mc^2}\bigg\langle n,l;r\bigg|\bigg(h(n;u)\widehat{1} + \frac{Ze^2}{\widehat{r}}\bigg)^2\bigg|n,l;r\bigg\rangle\\
+	&\hspace{1cm}+\frac{\hslash^2Ze^2}{4m^2c^2}\bigg\langle n,l;r\bigg|\frac{\delta(\widehat{r})}{\widehat{r}^2}\bigg|n,l;r\bigg\rangle\nonumber\\
+	&\hspace{2cm}+\frac{\hslash^2Ze^2}{4m^2c^2}\bigg\langle n,l;r\bigg|\frac{1}{\widehat{r}^3}\bigg|n,l;r\bigg\rangle[j(j+1) - l(l+1) - 3/4]~.\nonumber
+	\end{align}
+	
+	Il contributo di ordine zero agli autoket imperturbati appartenenti a $h(n,l,1/2,j)$ viene dato, di conseguenza, da
+	\begin{equation}
+	\label{appteo25}
+	|n,l,1/2,j,m_j;0\rangle = |n,l,1/2,j,m_j;u\rangle~.
+	\end{equation}
+	
+	Dalla \eqref{appteo24} si evince che il cambiamento di base adottato per semplificare i fattori angolari non interessa la parte radiale. Si pu\`o procedere ora con il calcolo degli elementi di matrice radiali. Per fare ci\`o \`e conveniente utilizzare le \textit{relazioni di Kramers}
+	\begin{align}
+	\label{appteo26}
+	&\frac{s}{4}[(2l+1)^2-s^2]\langle n,l;r|\widehat{r}{\hphantom{i}}^{s-2}|n,l;r\rangle\\
+	&\hspace{3cm}-(2s+1)\frac{Z}{r_B}\langle n,l;r|\widehat{r}{\hphantom{i}}^{s-1}|n,l;r\rangle + \frac{s+1}{n^2}\frac{Z^2}{{r_B}^2}\langle n,l;r|\widehat{r}{\hphantom{i}}^s|n,l;r\rangle = 0~,\nonumber
+	\end{align}
+	dove $r_B$ \`e il raggio di Bohr e $s$ \`e un numero reale. Queste relazioni, utilizzate in modo ricorsivo, permettono di calcolare i valori medi per potenze negative e positive di $\widehat{r}$. Infatti dalla \eqref{appteo26}, fissando $s=0$, si ottiene
+	\begin{equation}
+	\label{appteo27}
+	-\frac{Z}{r_B}\big\langle n,l;r\big|\frac{1}{\widehat{r}}\big|n,l;r\big\rangle + \frac{1}{n^2}\frac{Z^2}{{r_B}^2}\big\langle n,l;r\big|\widehat{1}\big|n,l;r\big\rangle = 0~,
+	\end{equation}
+	che implica
+	\begin{equation}
+	\label{appteo28}
+	\big\langle n,l;r\big|\frac{1}{\widehat{r}}\big|n,l;r\big\rangle = \frac{Z}{r_Bn^2}~.
+	\end{equation}
+	Si pu\`o utilizzare la \eqref{appteo26}, fissando $s=-1$, in modo da ottenere
+	\begin{equation}
+	\label{appteo29}
+	\big\langle n,l;r\big|\frac{1}{\widehat{r}^{3}}\big|n,l;r\big\rangle = \frac{4}{(2l+1)^2-1}\frac{Z}{r_B}\big\langle n,l;r\big|\frac{1}{\widehat{r}^2}\big|n,l;r\big\rangle~.
+	\end{equation}
+	Se viene calcolato separatamente il valor medio di $\widehat{r}^{-2}$, l'ultima relazione permette di ottenere senza ulteriore sforzo il valor medio di $\widehat{r}^{-3}$. Le autofunzioni radiali per un atomo idrogenoide sono note e date da
+	\begin{align}
+	\label{appteo30}
+	&\chi_{nl}(r)=\bigg[\bigg(\frac{2Z}{r_Bn}\bigg)^3\frac{(n-l-1)!}{2n[(n+l)!]^3}\bigg]^{1/2}\bigg(\frac{2Zr}{r_Bn}\bigg)^l\exp\bigg(-\frac{Zr}{r_Bn}\bigg)L_{n+l}^{2l+1}\bigg(\frac{2Zr}{r_Bn}\bigg)~,
+	\end{align}
+	dove $L_{n-l-1}^{2l+1}(x)$ sono i ben noti \textit{polinomi di Laguerre}. Il calcolo del valore medio di $\widehat{r}^{-2}$ \`e laborioso. Una possibile via sfrutta il \textit{teorema di Feynman-Hellmann}. Questa, nonostante fornisca il risultato esatto, presenta il problema formale di promuovere il numero quantico $l$ a parametro continuo nell'hamiltoniana radiale. Un'altra via \`e il calcolo diretto attraverso l'integrale seguente
+	\begin{align}
+	\label{appteo31}
+	\bigg\langle n,l;r\bigg|\frac{1}{\widehat{r}^2}\bigg|n,l;r\bigg\rangle&= 
+	\int_{0}^{\infty}dr\chi_{nl}^*(r)\frac{1}{{r}^2}\chi_{nl}(r)r^2\\
+	&=\int_{0}^{\infty}dr|\chi_{nl}(r)|^2\nonumber\\
+	&=\int_{0}^{\infty}dr\bigg[\bigg(\frac{2Z}{r_Bn}\bigg)^{3}\frac{(n-l-1)!}{2n[(n+l)!]^3}\bigg]\bigg(\frac{2Zr}{r_Bn}\bigg)^{2l}\exp\bigg(-\frac{2Zr}{r_Bn}\bigg)\nonumber\\
+	&\hspace{3cm}\times\bigg|L_{n+l}^{2l+1}\bigg(\frac{2Zr}{r_Bn}\bigg)\bigg|^2\nonumber\\
+	&=\bigg[\bigg(\frac{2Z}{r_Bn}\bigg)^{3}\frac{(n-l-1)!}{2n[(n+l)!]^3}\bigg]\int_{0}^{\infty}dr~\bigg(\frac{2Zr}{r_Bn}\bigg)^{2l}\exp\bigg(-\frac{2Zr}{r_Bn}\bigg)\nonumber\\
+	&\hspace{3cm}\times\bigg|L_{n+l}^{2l+1}\bigg(\frac{2Zr}{r_Bn}\bigg)\bigg|^2~,\nonumber
+	\end{align}
+	si procede con la sostituzione $x=\frac{2Zr}{r_Bn}$ con $dr = (\frac{2Z}{r_Bn})^{-1}dx$ per cui
+	\begin{equation}
+	\label{appteo32}
+	\bigg\langle n,l;r\bigg|\frac{1}{\widehat{r}^2}\bigg|n,l;r\bigg\rangle =
+	\bigg(\frac{2Z}{r_Bn}\bigg)^{2}\bigg[\frac{(n-l-1)!}{2n[(n+l)!]^3}\bigg]\int_{0}^{\infty}dx~x^{2l}\exp(-x)\big|L_{n+l}^{2l+1}(x)\big|^2~.
+	\end{equation}
+	Il calcolo di questo integrale pu\`o essere completato seguendo il metodo descritto nell'Appendice 3 del Bransden-Joachain \cite{BJ}.
+	Infine, il valore medio ricercato risulta
+	\begin{equation}
+	\label{appteo33}
+	\bigg\langle n,l;r\bigg|\frac{1}{\widehat{r}^2}\bigg|n,l;r\bigg\rangle=
+	\frac{Z^2}{{r_B}^2n^3(l+1/2)}~,
+	\end{equation}
+	di conseguenza, ricordando la \eqref{appteo29},
+	\begin{equation}
+	\label{appteo34}
+	\bigg\langle n,l;r\bigg|\frac{1}{\widehat{r}^3}\bigg|n,l;r\bigg\rangle=
+	\frac{Z^3}{{r_B}^3n^3l(l+1/2)(l+1)}~.
+	\end{equation}
+	
+	Ci si sofferma, ora, sul calcolo dei singoli contributi cosicch\`e si possano evidenziare gli effetti che questi causano sui livelli energetici di Bohr. A questo scopo, viene diviso il termine correttivo al primo ordine $h(n,l,1/2,j;1)$ nei tre contributi singoli
+	\begin{equation}
+	\label{appteo35}
+	h(n,l,1/2,j;1) = h_{mv}(n,l,1/2,j;1) + h_{so}(n,l,1/2,j;1) + h_D(n,l,1/2,j;1)~.
+	\end{equation}
+	
+	Procedendo in ordine, il termine di variazione alla massa relativistica porta la correzione seguente
+	\begin{align}
+	\label{appteo36}
+	&h_{mv}(n,l,1/2,j;1) = -\frac{1}{2mc^2}\bigg\langle n,l;r\bigg|h(n;u)^2\widehat{1} + 2h(n;u)\frac{Ze^2}{\widehat{r}} + \frac{Z^2e^4}{\widehat{r}^2}\bigg|n,l;r\bigg\rangle\\
+	&\hspace{1cm}=\frac{1}{2mc^2}\bigg\lbrace\bigg[\frac{mc^2(Z\alpha)^2}{2n^2}\bigg]^2 - 2Ze^2\frac{mc^2(Z\alpha)^2}{2n^2}\frac{Z}{r_Bn^2} + (Ze^2)^2\frac{Z^2}{{r_B}^2n^3(l+1/2)}\bigg\rbrace\nonumber\\
+	&\hspace{1cm}=\frac{1}{2}mc^2\frac{(Z\alpha)^4}{n^4}\bigg[\frac{3}{4} - \frac{n}{l+1/2}\bigg]~,\nonumber
+	\end{align}
+	che produce un semplice spostamento dell'$n$-esimo livello di Bohr la cui intensit\`a dipende dai valori di $n$ e $l$.
+	
+	Il termine perturbativo dovuto all'interazione spin-orbita, presente esclusivamente nel caso $l\neq0$, produce una correzione
+	\begin{align}
+	\label{appteo37}
+	h_{so}(n,l,1/2,j;1) &= \frac{\hslash^2Ze^2}{4m^2c^2}\bigg\langle n,l;r\bigg|\frac{1}{\widehat{r}^3}\bigg|n,l;r\bigg\rangle\bigg[j(j+1) -l(l+1) -\frac{3}{4}\bigg]\\
+	&=\frac{\hslash^2Ze^2}{4m^2c^2}\frac{Z^3}{{r_B}^3n^3l(l+1/2)(l+1)}\bigg[j(j+1) -l(l+1) -\frac{3}{4}\bigg]\nonumber~.
+	\end{align}
+	Tuttavia il numero quantico $j$ \`e stato definito in modo tale che possa assumere due valori: $j=l+1/2$ o $j=l-1/2$. Di conseguenza, dato un set di numeri quantici $n$, $l\neq0$, $s=1/2$, si hanno due fattori angolari differenti
+	\begin{equation}
+	\label{appteo38}
+	\bigg[j(j+1) -l(l+1) -\frac{3}{4}\bigg] = \left\{
+	\begin{array}{rl}
+	l\hphantom{+1} &\text{se } j=l+1/2,\\
+	-l-1 &\text{se } j=l-1/2.
+	\end{array} \right.
+	\end{equation}
+	Sostituendo l'ultima espressione per i fattori angolari in \eqref{appteo37} si ottiene
+	\begin{equation}
+	\label{appteo39}
+	h_{so}(n,l,1/2,j;1) =
+	\begin{cases}
+	\displaystyle{\frac{mc^2(Z\alpha)^4}{4n^3(l+1/2)(l+1)}} &\text{se } j=l+1/2,\\\\
+	\displaystyle{-\frac{mc^2(Z\alpha)^4}{4n^3l(l+1/2)}} &\text{se } j=l-1/2.
+	\end{cases}
+	\end{equation}
+	Da \eqref{appteo39} si nota come il termine perturbativo di spin-orbita produca uno sdoppiamento dei livelli energetici dovuto alla dipendenza dal numero quantico $j$.
+	
+	Il termine di Darwin, presente esclusivamente nel caso $l=0$, apporta una correzione
+	\begin{align}
+	\label{appteo40}
+	h_D(n,0,1/2,j;1) &= \frac{\hslash^2Ze^2}{4m^2c^2}\bigg\langle n,l;r\bigg|\frac{\delta(\widehat{r})}{\widehat{r}^2}\bigg|n,l;r\bigg\rangle\\
+	&=\frac{\hslash^2Ze^2}{4m^2c^2}\big|L_{n-1}^1(0)\big|\nonumber\\
+	&=\frac{1}{2}mc^2\frac{(Z\alpha)^4}{n^3}~.\nonumber
+	\end{align}
+	Questo termine si limita a produrre uno spostamento del livello energetico imperturbato la cui intensit\`a dipende dal numero quantico $n$.
+	
+	Infine si pu\`o ottenere un'espressione del contributo energetico complessivo per qualsiasi valore di $l$, infatti, se viene fissato $j=1/2$ quando $l=0$, sostituendo \eqref{appteo40}, \eqref{appteo39} e \eqref{appteo36} in \eqref{appteo35}
+	\begin{equation}
+	\label{appteo41}
+	h(n,l,1/2,j;1) = -\frac{(Z\alpha)^4}{2n^4}\bigg[\frac{n}{j+1/2} - \frac{3}{4}\bigg] = h(n;u)\bigg[\frac{(Z\alpha)^2}{n^2}\bigg(\frac{n}{j+1/2} - \frac{3}{4}\bigg)\bigg]~.
+	\end{equation}
+	Quindi l'espressione esplicita dei livelli energetici perturbati al primo ordine \`e data da
+	\begin{equation}
+	\label{appteo42}
+	h(n,l,1/2,j) = h(n;u)\bigg\lbrace 1 + \frac{(Z\alpha)^2}{n^2}\bigg[\frac{n}{j+1/2} - \frac{3}{4}\bigg] \bigg\rbrace~.
+	\end{equation}
+	Risulta evidente che i nuovi livelli energetici non dipendono pi\`u unicamente dal numero quantico principale $n$, ma anche dal numero quantico del momento angolare totale $j$. La teoria perturbativa ha permesso la rimozione parziale della degenerazione in $n$ dei livelli energetici di Bohr, infatti fissato $n$ la \eqref{appteo42} suggerisce che esistano $n-1$ livelli distinti con un proprio grado di degenerazione.
+	
+	
+	
+	Nel caso specifico di $n=2$, si ha $l=0,1$. Viene denotato\footnote{Si utilizza la notazione spettroscopica degli orbitali atomici.} con $s$ l'orbitale con $l=0$ e $j=1/2$; viene denotato con $p$ l'orbitale con $l=1$ e $j=1/2,3/2$. Utilizzando la \eqref{appteo42} si ottiene
+	\begin{align}
+	&h(2,0,1/2,1/2) = h(2,1,1/2,1/2) = h(2;u)\bigg[1+\frac{5}{16}(Z\alpha)^2\bigg]~,\label{appteo43}\\
+	&h(2,1,1/2,3/2) = h(2;u)\bigg[1+\frac{1}{16}(Z\alpha)^2\bigg]~\label{appteo44}~.
+	\end{align}
+	Risultano perci\`o tre possibili configurazioni per due soli livelli energetici distinti, in quanto gli stati $2s_{1/2}$ e $2p_{1/2}$ sono caratterizzati dagli stessi valori dei numeri quantici $n$ e $j$. Il grado di degenerazione di ogni livello \`e $2j+1$, poich\`e per ogni valore di $j$ si ha $m_j=-j,-j+1,\dots,j-1,j$. L'orbitale $2p_{3/2}$ contiene 4 autostati energetici, mentre gli orbitali $2s_{1/2}$ e $2p_{1/2}$ ne contengono 2 ciascuno. Si verifica che il numero di autostati relativi al numero quantico principale $n$ sono proprio $2n^2|_{n=2}=8$ come previsto da Bohr.
+	
+	Nel caso in cui $n=3$, si ha $l=0,1,2$. Il nuovo caso $l=2$ viene denotato con $d$ e $j=3/2,5/2$. Si ottengono, analogamente al caso precedente, i possibili livelli energetici
+	\begin{align}
+	&h(3,0,1/2,1/2) = h(3,1,1/2,1/2) = h(3;u)\bigg[1+\frac{1}{4}(Z\alpha)^2\bigg]~,\label{appteo45}\\
+	&h(3,1,1/2,3/2) = h(3,2,1/2,3/2) = h(3;u)\bigg[1+\frac{1}{12}(Z\alpha)^2\bigg]~,\label{appteo46}\\
+	&h(3,1,1/2,3/2) = h(3;u)\bigg[1+\frac{1}{36}(Z\alpha)^2\bigg]\label{appteo47}~.
+	\end{align}
+	Si hanno 5 configurazioni per soli 3 livelli energetici. Il livello energetico associato ai valori $n=3$ e $j=1/2$ contiene 4 autostati energetici per due possibili configurazioni $3s_{1/2}$ e $3p_{1/2}$, 2 ciascuno. Il livello energetico associato ai valori $n=3$ e $j=3/2$ contiene 8 autostati energetici per due possibili configurazioni $3p_{3/2}$ e $3d_{3/2}$, 4 ciascuno. Il livello energetico associato ai valori $n=3$ e $j=5/2$ contiene 6 autostati energetici per una possibile configurazione $3d_{5/2}$. Il totale degli autostati energetici per $n=3$ risulta proprio essere $2n^2|_{n=3}=18$.
+	
+	\begin{figure}[ht]
+		\centering
+		\begin{pspicture}(-0.5,-0.5)(8,6)
+		\psline[linewidth=1.5pt]{->}(-0.5,0)(-0.5,6)
+		\uput{10pt}[180](-0.5,6){Energia}
+		
+		\psline[linewidth=1pt, linecolor=lightgray](0,.1)(2,.1)
+		
+		\psline[linewidth=1pt, linecolor=darkgray](0,1.4)(2,1.4)
+		\uput{1pt}[90](3.6,1.4){$3p_{1/2}$}
+		\psline[linewidth=1pt, linecolor=lightgray, linestyle=dotted](2,1.4)(3,1.4)
+		\psline[linewidth=1pt, linecolor=darkgray](3,1.4)(5,1.4)
+		\uput{1pt}[90](1.3,1.4){$3s_{1/2}$}
+		
+		\psline[linewidth=1pt, linecolor=lightgray](3,2)(5,2)
+		
+		\psline[linewidth=1pt, linecolor=darkgray](3,2.6)(5,2.6)
+		\uput{1pt}[90](4.4,2.6){$3p_{3/2}$}
+		\psline[linewidth=1pt, linecolor=lightgray, linestyle=dotted](5,2.6)(6,2.6)
+		\psline[linewidth=1pt, linecolor=darkgray](6,2.6)(8,2.6)
+		\uput{1pt}[90](6.6,2.6){$3d_{3/2}$}
+		
+		\psline[linewidth=1pt, linecolor=lightgray](6,3.2)(8,3.2)
+		
+		\psline[linewidth=1pt, linecolor=darkgray](6,3.8)(8,3.8)
+		\uput{1pt}[90](7.4,3.8){$3d_{5/2}$}
+		
+		\psline[linewidth=1pt, linecolor=lightgray](0,5.2)(2,5.2)
+		\uput{5pt}[90](1,5.2){$l=0$}
+		\psline[linewidth=1pt, linecolor=lightgray, linestyle=dotted](2,5.2)(3,5.2)
+		\psline[linewidth=1pt, linecolor=lightgray](3,5.2)(5,5.2)
+		\uput{5pt}[90](4,5.2){$l=1$}
+		\psline[linewidth=1pt, linecolor=lightgray, linestyle=dotted](5,5.2)(6,5.2)
+		\psline[linewidth=1pt, linecolor=lightgray](6,5.2)(8,5.2)
+		\uput{5pt}[90](7,5.2){$l=2$}
+		\uput{10pt}[0](8,5.2){Livello di Bohr $n=3$}
+		
+		\psline[linewidth=1pt, linecolor=red]{*->}(0.6,5.2)(0.6,.1)
+		\psline[linewidth=1pt, linecolor=red]{*->}(3.6,5.2)(3.6,2)
+		\psline[linewidth=1pt, linecolor=red]{*->}(6.6,5.2)(6.6,3.2)
+		
+		\psline[linewidth=1pt, linecolor=green]{*->}(1.3,.1)(1.3,1.4)
+		
+		\psline[linewidth=1pt, linecolor=blue, linearc=0.1]{*->}(4.1,2)(4.5,1.7)(4.1,1.4)
+		\psline[linewidth=1pt, linecolor=blue, linearc=0.1]{*->}(4.5,2)(4.1,2.3)(4.5,2.6)
+		\psline[linewidth=1pt, linecolor=blue, linearc=0.1]{*->}(7.1,3.2)(7.5,2.8)(7.1,2.6)
+		\psline[linewidth=1pt, linecolor=blue, linearc=0.1]{*->}(7.5,3.2)(7.1,3.5)(7.5,3.8)
+		\end{pspicture}
+		\caption{la figura rappresenta in modo schematico le separazioni e gli splitting dovuti all'introduzione della struttura fine per il livello di Bohr con $n=3$ in un atomo idrogenoide. La figura non \`e in scala. Con le frecce rosse viene identificata la deviazione dovuta alla variazione relativistica della massa. Con la freccia verde si identifica la deviazione dovuta al termine di Darwin. Le frecce blu si riferiscono alla separazione dovuta al termine di spin-orbita}
+	\end{figure}
+
+	\begin{figure}[ht]
+		\centering
+		\begin{pspicture}(-0.5,-8)(9,6)
+		\psline[linewidth=3pt](0,5)(2,5)
+		\uput{5pt}[180](0,5){$n=3$}
+		\psline[linewidth=1pt, linestyle=dotted](2,5.03)(6.2,5.03)
+		
+		
+		\psline[linewidth=1pt](2,5.02)(3.6,4.5)
+		\psline[linewidth=1pt](2,5.01)(3.6,3.44)
+		\psline[linewidth=1pt](2,5)(3.6,0.26)
+		
+		\psline[linewidth=1pt](3.6,4.5)(6.2,4.5)
+		\uput{10pt}[0](6.2,4.5){$3d_{5/2}~(j=5/2,l=2)$}
+		\psline[linewidth=1pt](3.6,3.44)(6.2,3.44)
+		\uput{10pt}[0](6.2,3.44){$3p_{3/2}~(j=3/2,l=1); 3d_{3/2}~(j=3/2,l=2)$}
+		\psline[linewidth=1pt](3.6,0.26)(6.2,0.26)
+		\uput{10pt}[0](6.2,0.26){$3s_{1/2}~(j=1/2,l=0); 3p_{1/2}~(j=1/2,l=1)$}
+		
+		\psline[linewidth=1pt]{<->}(5.9,5.03)(5.9,4.5)
+		\uput{5pt}[180](5.9,4.765){$0.018~cm^{-1}$}
+		\psline[linewidth=1pt]{<->}(5.9,4.5)(5.9,3.44)
+		\uput{5pt}[180](5.9,3.97){$0.036~cm^{-1}$}
+		\psline[linewidth=1pt]{<->}(5.9,3.44)(5.9,0.26)
+		\uput{5pt}[180](5.9,1.85){$0.108~cm^{-1}$}
+		
+		
+		\psline[linewidth=2pt](0,-1.02)(2,-1.02)
+		\uput{5pt}[180](0,-1){$n=2$}
+		\psline[linewidth=1pt, linestyle=dotted](2,-1)(6.2,-1)
+		
+		
+		\psline[linewidth=1pt](2,-1.01)(3.6,-1.5)
+		\psline[linewidth=1pt](2,-1)(3.6,-3.51)
+		
+		\psline[linewidth=1pt](3.6,-1.5)(6.2,-1.5)
+		\uput{10pt}[0](6.2,-1.5){$2p_{3/2}~(j=3/2,l=1)$}
+		\psline[linewidth=1pt](3.6,-3.51)(6.2,-3.51)
+		\uput{10pt}[0](6.2,-3.51){$2s_{1/2}~(j=1/2,l=0); 2p_{1/2}~(j=1/2,l=1)$}
+		
+		\psline[linewidth=1pt]{<->}(5.9,-1)(5.9,-1.5)
+		\uput{5pt}[180](5.9,-1.25){$0.091~cm^{-1}$}
+		\psline[linewidth=1pt]{<->}(5.9,-1.5)(5.9,-3.51)
+		\uput{5pt}[180](5.9,-2.51){$0.365~cm^{-1}$}
+		
+		\psline[linewidth=1.5pt](0,-4.01)(2,-4.01)
+		\uput{5pt}[180](0,-4.01){$n=1$}
+		\psline[linewidth=1pt, linestyle=dotted](2,-4)(6.2,-4)
+		
+		
+		\psline[linewidth=1pt](2,-4)(3.6,-7)
+		
+		\psline[linewidth=1pt](3.6,-7)(6.2,-7)
+		\uput{10pt}[0](6.2,-7){$1s_{1/2}~(j=1/2,l=0)$}
+		
+		\psline[linewidth=1pt]{<->}(5.9,-4)(5.9,-7)
+		\uput{5pt}[180](5.9,-5.5){$1.46~cm^{-1}$}
+		
+		\uput{10pt}[-90](1,-7){$(a)$}
+		\uput{10pt}[-90](5,-7){$(b)$}
+		\end{pspicture}
+		\caption{Separazione in energia data dall'introduzione della struttura fine per i primi tre livelli di Bohr. La colonna $(a)$ rappresenta le energie imperturbate, la colonna $(b)$ le energie risultanti dopo aver ``acceso" la perturbazione. I 3 diagrammi non sono in scala tra loro. I calcoli sono stati fatti per l'atomo d'idrogeno, $Z=1$. Viene usata la notazione spettroscopica per identificare i nuovi livelli.}
+	\end{figure}
+
+	\begin{thebibliography}{99}
+	\bibitem{Z} R. ~Zucchini,
+	{\it Quantum Mechanics: Lecture Notes}
+	\bibitem{BJ} B. ~H. ~Brasden and C. ~J. ~Joachain,
+	{\it Physics of Atoms and Molecules}
+	
+\end{thebibliography}
+
+\end{document}

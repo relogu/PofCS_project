@@ -1,0 +1,17 @@
+*.pdf
+papers
+
+runApp.sh
+
+relation.tex
+*.aux
+*.fdb_latexmk
+*.fls
+*.bbl
+*.blg
+*.synctex.gz
+*.toc
+*.bib
+*.log
+*.out
+*.code-workspace
