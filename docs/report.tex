@@ -307,8 +307,9 @@ It receives as arguments the number of birds $k$, the number of different values
 of $\beta\in[0,1]$ to simulate, the magnitude of the time step $h$, and the value of $\sigma$.
 In every simulation $r=200$ and $h=1$ were fixed.
 The interval for $\beta$ was choosen for being the most representative.
-The initial conditions are taken randomly using the \Verb|mt19937| class provided by the 
-\verb|random| standard library for both velocities and positions of the birds.
+The initial conditions are sampled by the uniform distribution in the interval $[0,1]$, randomly
+seeded using the \Verb|mt19937| class provided by the 
+\verb|random| standard library, for both velocities and positions of the birds.
 The simulation proceeds as the following pseudo-code explains
 \begin{lstlisting}[language=C++]
 do {
@@ -351,10 +352,10 @@ on the couple $\sigma$, $\beta$ at the same time and on the couple $k$, $\beta$ 
 \begin{figure}[ht]
     \centering
     \subfloat[]{
-        \includegraphics[width=0.45\textwidth, keepaspectratio]{images/N100_sigma1.png}
+        \includegraphics[width=0.45\textwidth, keepaspectratio]{../images/N100_sigma1.png}
     }
     \subfloat[]{
-        \includegraphics[width=0.45\textwidth, keepaspectratio]{images/N100_sigma1log.png}
+        \includegraphics[width=0.45\textwidth, keepaspectratio]{../images/N100_sigma1log.png}
     }
     \caption{Here is shown the tren of the convergence for the topical case with $\sigma=1$ 
         and $k=100$. In (a) are plotted $\epsilon_x$ and $\epsilon_v$ in linear scale, while 
@@ -364,10 +365,10 @@ on the couple $\sigma$, $\beta$ at the same time and on the couple $k$, $\beta$ 
 \begin{figure}[hb]
     \centering
     \subfloat[]{
-        \includegraphics[width=0.45\textwidth, keepaspectratio]{images/N100_sigmaA.png}
+        \includegraphics[width=0.45\textwidth, keepaspectratio]{../images/N100_sigmaA.png}
     }
     \subfloat[]{
-        \includegraphics[width=0.45\textwidth, keepaspectratio]{images/N100_sigmaAX.png}
+        \includegraphics[width=0.45\textwidth, keepaspectratio]{../images/N100_sigmaAX.png}
     }
     \caption{Here is shown the influence of the value of $\sigma$ on the trend of the 
         convergence. In (a) is plotted $\epsilon_v$, while in (b) $\epsilon_x$.}
@@ -376,10 +377,10 @@ on the couple $\sigma$, $\beta$ at the same time and on the couple $k$, $\beta$ 
 \begin{figure}[ht]
     \centering
     \subfloat[]{
-        \includegraphics[width=0.45\textwidth, keepaspectratio]{images/N100_3d.png}
+        \includegraphics[width=0.45\textwidth, keepaspectratio]{../images/N100_3d.png}
     }
     \subfloat[]{
-        \includegraphics[width=0.45\textwidth, keepaspectratio]{images/sigma1_3d.png}
+        \includegraphics[width=0.45\textwidth, keepaspectratio]{../images/sigma1_3d.png}
     }
     \caption{These 3D plots give a different view of the trend of the convergence 
         considering the parameter $\beta$, with $\sigma$ for the plot (a), and with 

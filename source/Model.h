@@ -22,3 +22,4 @@ float computeV3DConvergence(float*, float*, float*, int);
 bool checkConvergence(int, float*, float, int);
 void DumpResult(string, float, int, float, int, float*, float);
 void run3DFlockingModel(int, int, float, float);
+void draw3DFlockingModel(int, int, float, float);
