@@ -1,6 +1,5 @@
 #include "Model.h"
 #include "Initializers.h"
-#include "draw.h"
 #include <iostream>
 #include <iomanip>
 #include <string>
