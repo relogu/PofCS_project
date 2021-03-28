@@ -19,8 +19,9 @@ int main(){
     //TODO: data for studying the dependence on N
     N = 2;
     #pragma omp parallel for
-    for (int i=0; i < 100; i+=5) run3DFlockingModel(N*(1+i), dt, sigma, beta);
+    for (int i=0; i < 200; i+=1) run3DFlockingModel(N*(1+i), dt, sigma, beta);
     // data for studying the dependence on sigma
+    N = 10;
     #pragma omp parallel for
     for (int i=1; i < 200; i++){
         double s = exp(0.1*i) - 1.0 + sigma;
