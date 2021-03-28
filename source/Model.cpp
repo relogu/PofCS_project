@@ -299,7 +299,7 @@ void run3DFlockingModel(int birds, double dt, double sigma, double beta){
     filepp.open(tmp1.str().c_str(), ofstream::trunc);
     filepp << "sigma,N,beta,iter,[space_conv],[vel_conv],[[positions]],[[velocities]]" << endl;
     filepp.close();
-    cout << "Preliminary operations done" << endl;
+    //cout << "Preliminary operations done" << endl;
 
     //cout << "Computing simulation for beta " << beta << endl;
     // instantiate initial (random) conditions
