@@ -4,52 +4,52 @@
 
 using namespace std;
 
-void initializeRandomMatrix(float*** matrix, int N, mt19937* generator){
+void initializeRandomMatrix(double*** matrix, int N, mt19937* generator){
 
-    (*matrix) = new float*[N];
+    (*matrix) = new double*[N];
     for(int i=0; i<N; i++){
-        (*matrix)[i] = new float[N];
+        (*matrix)[i] = new double[N];
     }
 
     for(int i=0; i<N; i++){
         for(int j=0; j<N; j++){
-        uniform_real_distribution<float> unif(0.0,10.0);
+        uniform_real_distribution<double> unif(0.0,10.0);
             (*matrix)[i][j] = unif(*generator);
         }
     }
     
 }
 
-void initializeNullMatrix(float*** matrix, int N){
+void initializeNullMatrix(double*** matrix, int N){
 
-    (*matrix) = new float*[N];
+    (*matrix) = new double*[N];
     for(int i=0; i<N; i++){
-        (*matrix)[i] = new float[N];
+        (*matrix)[i] = new double[N];
     }
 
     for(int i=0; i<N; i++){
         for(int j=0; j<N; j++){
-            (*matrix)[i][j] = 0.0f;
+            (*matrix)[i][j] = 0.0;
         }
     }
     
 }
 
-void initializeRandomVector(float** vector, int N, mt19937* generator){
+void initializeRandomVector(double** vector, int N, mt19937* generator){
 
-    (*vector) = new float[N];
+    (*vector) = new double[N];
     for(int i=0; i<N; i++){
-        uniform_real_distribution<float> unif(-1.0,1.0);
+        uniform_real_distribution<double> unif(-5.0,5.0);
         (*vector)[i] = unif(*generator);
     }
     
 }
 
-void initializeNullVector(float** vector, int N){
+void initializeNullVector(double** vector, int N){
 
-    (*vector) = new float[N];
+    (*vector) = new double[N];
     for(int i=0; i<N; i++){
-        (*vector)[i] = 0.0f;
+        (*vector)[i] = 0.0;
     }
     
 }
