@@ -23,7 +23,7 @@ double* computeSpatialConvergence(double*, double*, double*, double*, double*, d
 double computeV3DConvergence1(double*, double*, double*, int);
 double* computeV3DConvergence(double*, double*, double*, double*, int);
 bool checkConvergence1(int, double*, double, int);
-bool checkConvergence(int, double*, double*, int);
+bool checkConvergence(int, double*, double*, int, double);
 void DumpResult1(string, double, int, double, int, double*, double);
 void DumpResult(string, double, int, double, int, double*, double*, double*, double*, double*, double*, double*, double*);
-void run3DFlockingModel(int, double, double, double);
+void run3DFlockingModel(string, int, double, double, double, int, double);

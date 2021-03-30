@@ -13,7 +13,7 @@
 using namespace std;
 
 #ifndef EPSILON
-#define EPSILON 1.2e-7f
+#define EPSILON 1.0e-15f
 #endif
 
 #ifndef BETA_MAX
@@ -178,10 +178,10 @@ bool checkConvergence1(int iter, double* Xprecs, double Vprec, int max_iter){
     return ret;
 }
 
-bool checkConvergence(int iter, double* Xprecs, double* Vprec, int max_iter){
+bool checkConvergence(int iter, double* Xprecs, double* Vprec, int max_iter, double epsilon){
     bool ret = true;
-    if ((Vprec[0] < EPSILON && Vprec[1] < EPSILON && Vprec[2] < EPSILON
-            && Xprecs[0] < EPSILON && Xprecs[1] < EPSILON && Xprecs[2] < EPSILON) ||
+    if ((Vprec[0] < epsilon && Vprec[1] < epsilon && Vprec[2] < epsilon
+            && Xprecs[0] < epsilon && Xprecs[1] < epsilon && Xprecs[2] < epsilon) ||
         iter > max_iter) ret = false;
     return ret;
 }
@@ -264,7 +264,7 @@ void DumpResult(string filename, double sigma, int N, double beta, int iter, dou
     filepp.close();
 }
 
-void run3DFlockingModel(int birds, double dt, double sigma, double beta){
+void run3DFlockingModel(string path, int birds, double dt, double sigma, double beta, int max_iter, double epsilon){
     // Seed with a real random value, if available
     //random_device r;
     // Retrieve a seed sequence fror next RNGs
@@ -280,7 +280,8 @@ void run3DFlockingModel(int birds, double dt, double sigma, double beta){
     double m_sigma_sqrd;
     double m_beta;
     double time;
-    int max_iter;
+    int m_max_iter;
+    double m_epsilon;
     double K_den;
     double m_K;
     ostringstream tmp1;
@@ -292,13 +293,15 @@ void run3DFlockingModel(int birds, double dt, double sigma, double beta){
     N = birds;
     K_den = (N-1)*sqrt(N);
     m_K = pow(m_sigma_sqrd, m_beta)/K_den; // - EPSILON;
-    max_iter = 100*N;
-    tmp1 << "../results/" << N << "_" << sigma << "_" << m_beta << ".dat";
+    m_max_iter = max_iter;
+    m_epsilon = epsilon;
+    tmp1 << path << N << "_" << sigma << "_" << m_beta << "_" << max_iter << "_" << epsilon << ".dat";
 
     ofstream filepp;
     filepp.open(tmp1.str().c_str(), ofstream::trunc);
     filepp << "sigma,N,beta,iter,[space_conv],[vel_conv],[[positions]],[[velocities]]" << endl;
     filepp.close();
+    cout << "Running simulation with parameters -- k "<< N << " -- h " << dt << " -- sigma " << sigma << " --  beta " << beta << endl;
     //cout << "Preliminary operations done" << endl;
 
     //cout << "Computing simulation for beta " << beta << endl;
@@ -374,7 +377,7 @@ void run3DFlockingModel(int birds, double dt, double sigma, double beta){
         swap(displacements_y, displacements_y_1);
         swap(displacements_z, displacements_z_1);
 
-    } while (checkConvergence(iter, X_convergence, V_convergence, max_iter));
+    } while (checkConvergence(iter, X_convergence, V_convergence, m_max_iter, m_epsilon));
 
 
     ostringstream tmp;
