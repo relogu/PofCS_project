@@ -52,5 +52,5 @@
         "typeinfo": "cpp",
         "bit": "cpp"
     },
-    "python.pythonPath": "/home/relogu/anaconda3/bin/python"
+    "python.pythonPath": "/home/relogu/anaconda3/envs/flwr/bin/python"
 }
