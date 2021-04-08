@@ -365,6 +365,35 @@ plt.legend([g0], [r'$\left\Vert v^{max}\right\Vert(t_{last})$'])
 #ax.ticklabel_format(axis='y', style='sci', scilimits=(0,0))
 plt.show()
 
+path=proj_path+'results5/'
+results = build_dataframe(path, True)
+tmp = results[results['beta']==0.5]
+acceptance = tmp[tmp['sigma']==1].reset_index()
+
+sns.set(style = "whitegrid")
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10,5))
+plt.xlabel(r'$k$')
+ax.set_ylabel(r'$\left\Vert d^{max}\right\Vert$')
+ax.relim()
+#ax.set(yscale="log")
+g0 = plt.scatter(x=acceptance['N'], y=acceptance['space_norm'], marker='.')
+#sns.scatterplot(x='iter', y='space_norm', data=acceptance)
+plt.legend([g0], [r'$\left\Vert d^{max}\right\Vert(k)$'])
+#ax.ticklabel_format(axis='y', style='sci', scilimits=(0,0))
+plt.show()
+
+sns.set(style = "whitegrid")
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10,5))
+plt.xlabel(r'$k$')
+ax.set_ylabel(r'$\left\Vert v^{max}\right\Vert$')
+ax.relim()
+#ax.set(yscale="log")
+g0 = plt.scatter(x=acceptance['N'], y=acceptance['vel_norm'], marker='.')
+#sns.scatterplot(x='iter', y='space_norm', data=acceptance)
+plt.legend([g0], [r'$\left\Vert v^{max}\right\Vert(k)$'])
+#ax.ticklabel_format(axis='y', style='sci', scilimits=(0,0))
+plt.show()
+
 
 #%% moving birds animation
 path=proj_path+'results2/'
@@ -380,3 +409,253 @@ for k in birds['N'].unique():
         df = list(tmp['[[positions]]'])
         df = traslate_to_baricenter(df)
         positions_evolutions(filename, df, True)
+
+#%%
+
+# velocity convergence criterion
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(20,10))
+plt.xlabel('t')
+ax.set_ylabel(r'$\epsilon_v$')
+ax.set(yscale="log")
+ax.relim()
+sns.scatterplot(x='tau', y='vel_norm', hue='N',
+                data=birds, legend='full')
+plt.show()
+
+# spatial convergence criterion
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(20,10))
+plt.xlabel('t')
+ax.set_ylabel(r'$\epsilon_v$')
+ax.set(yscale="log")
+ax.relim()
+sns.scatterplot(x='tau', y='space_norm', hue='N',
+                data=birds, legend='full')
+plt.show()
+
+#%%
+conv_1 = results[results['N']==10]
+
+sns.set(style = "darkgrid")
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10,5))
+plt.xlabel(r'$\beta$')
+ax.set_ylabel(r"$\epsilon_v$")
+ax.set(yscale="log")
+sns.scatterplot(x='iter', y='space_norm', hue='beta', data=conv_1)
+plt.show()
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10,5))
+plt.xlabel(r'$\beta$')
+ax.set_ylabel(r"$\epsilon_v$")
+ax.set(yscale="log")
+ax.relim()
+sns.scatterplot(x='iter', y='vel_norm', hue='beta', data=conv_1)
+plt.show()
+
+#%% scale law
+conv_1 = results[results['N']==10]
+conv_1 = conv_1[conv_1['beta']==0.4]
+conv_1 = conv_1[conv_1['sigma']!=1]
+
+
+sns.set(style = "darkgrid")
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10,5))
+plt.xlabel('t')
+ax.set_ylabel(r"$\epsilon_x$")
+ax.set(yscale="log")
+sns.scatterplot(x='iter', y='space_norm', hue='sigma', data=conv_1)
+plt.show()
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10,5))
+plt.xlabel('t')
+ax.set_ylabel(r"$\epsilon_v$")
+ax.set(yscale="log")
+sns.scatterplot(x='iter', y='Vel_norm', hue='sigma', data=conv_1)
+
+sns.set(style = "darkgrid")
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10,5))
+plt.xlabel(r"$\tau$")
+ax.set_ylabel('t')
+ax.set(yscale="log")
+sns.scatterplot(x='iter', y='Space_norm', hue='sigma', data=conv_1)
+plt.show()
+
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10,5))
+plt.xlabel(r"$\tau$")
+ax.set_ylabel(r"$\epsilon_v$")
+ax.set(yscale="log")
+sns.scatterplot(x='iter', y='Vel_norm', hue='sigma', data=conv_1)
+plt.show()
+
+sns.set(style = "darkgrid")
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10,5))
+plt.xlabel(r"$\epsilon_x$")
+ax.set_ylabel(r"$\epsilon_X$")
+ax.set(yscale="log")
+sns.scatterplot(x='space_norm', y='Space_norm', hue='sigma', data=conv_1)
+plt.show()
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10,5))
+plt.xlabel(r"$\epsilon_V$")
+ax.set_ylabel(r"$\epsilon_v$")
+ax.set(yscale="log")
+sns.scatterplot(x='vel_norm', y='Vel_norm', hue='sigma', data=conv_1)
+plt.show()
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10,5))
+plt.xlabel("t")
+ax.set_ylabel(r"$\tau$")
+ax.set(yscale="log")
+sns.scatterplot(x='iter', y='tau', hue='sigma', data=conv_1)
+plt.show()
+
+sns.set(style = "darkgrid")
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10,5))
+plt.xlabel(r"$\tau$")
+ax.set_ylabel('t')
+ax.set(yscale="log")
+sns.scatterplot(x='tau', y='Space_norm', hue='sigma', data=conv_1)
+plt.show()
+
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10,5))
+plt.xlabel(r"$\tau$")
+ax.set_ylabel(r"$\epsilon_v$")
+ax.set(yscale="log")
+sns.scatterplot(x='tau', y='Vel_norm', hue='sigma', data=conv_1)
+plt.show()
+
+sns.set(style = "darkgrid")
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10,5))
+plt.xlabel(r"$\tau$")
+ax.set_ylabel('t')
+ax.set(yscale="log")
+sns.scatterplot(x='iter', y='Space_norm', hue='sigma', data=conv_1)
+plt.show()
+
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10,5))
+plt.xlabel(r"$\tau$")
+ax.set_ylabel(r"$\epsilon_v$")
+ax.set(yscale="log")
+sns.scatterplot(x='iter', y='Vel_norm', hue='sigma', data=conv_1)
+plt.show()
+
+#%%
+
+conv_1 = conv_1[conv_1['sigma']==1]
+
+sns.set(style = "darkgrid")
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10,5))
+plt.xlabel(r'$\beta$')
+ax.set_ylabel(r"$\epsilon_v$")
+ax.set(yscale="log")
+sns.scatterplot(x='iter', y='space_norm', hue='N', data=conv_1)
+plt.show()
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10,5))
+plt.xlabel(r'$\beta$')
+ax.set_ylabel(r"$\epsilon_v$")
+ax.set(yscale="log")
+sns.scatterplot(x='iter', y='vel_norm', hue='N', data=conv_1)
+plt.show()
+
+
+conv['modX'] = np.sqrt(conv['Xprec_i']*conv['Xprec_i'] + \
+                       conv['Xprec_j']*conv['Xprec_j'] + \
+                       conv['Xprec_k']*conv['Xprec_k']) + 1.19e-7
+
+conv1 = conv[conv['N']==100]
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10,5))
+plt.xlabel(r'$\beta$')
+ax.set_ylabel(r"$\epsilon_v$")
+sns.scatterplot(x='beta', y='Vprec', hue='sigma', data=conv1)
+plt.axvline(0.5, 0, 1,color='Red')
+plt.show()
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10,5))
+plt.xlabel(r'$\beta$')
+ax.set_ylabel(r"$\log\epsilon_v$")
+ax.set(yscale="log")
+sns.scatterplot(x='beta', y='Vprec', hue='sigma', data=conv1)
+plt.axvline(0.5, 0, 1,color='Red')
+plt.show()
+conv1['modX'] = conv1['modX']/np.sqrt(conv1['sigma'])
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10,5))
+plt.xlabel(r'$\beta$')
+ax.set_ylabel(r"$\epsilon_x$")
+sns.scatterplot(x='beta', y='modX', hue='sigma', data=conv1)
+plt.axvline(0.5, 0, 1,color='Red')
+plt.show()
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10,5))
+plt.xlabel(r'$\beta$')
+ax.set_ylabel(r"$\log\epsilon_x$")
+ax.set(yscale="log")
+sns.scatterplot(x='beta', y='modX', hue='sigma', data=conv1)
+plt.axvline(0.5, 0, 1,color='Red')
+plt.show()
+
+conv2=conv[conv['sigma']==1]
+#plt.ion()
+sns.set(style = "darkgrid")
+fig = plt.figure()
+ax = fig.add_subplot(111, projection = '3d')
+
+x = conv1['beta']
+y1 = conv1['Vprec']
+y2 = conv1['modX']
+z = conv1['sigma']
+
+plt.xlabel(r'$\beta$')
+ax.set_ylabel(r"$\epsilon$")
+ax.set_zlabel(r"$\sigma$")
+
+M = int(np.max(y1,0))+2
+N = int(np.max(z,0))+1
+
+yy, zz = np.meshgrid(range(M), range(N))
+g2 = ax.plot_surface(0.5, yy, zz, alpha=0.2, color='red')
+
+g0 = ax.scatter(x, y1, z)
+g1 = ax.scatter(x, y2, z)
+plt.legend((g0, g1), (r'$\epsilon_v$', r'$\epsilon_x$'))
+
+
+plt.show()
+
+conv2=conv[conv['sigma']==1]
+#plt.ion()
+sns.set(style = "darkgrid")
+fig = plt.figure()
+ax = fig.add_subplot(111, projection = '3d')
+
+x = conv2['beta']
+y1 = conv2['Vprec']
+y2 = conv2['modX']
+z = conv2['N']
+
+ax.set_xlabel(r"$\beta$")
+ax.set_ylabel(r"$\epsilon$")
+ax.set_zlabel("k")
+
+M = int(np.max(y1,0))+2
+
+yy, zz = np.meshgrid(range(M), range(100))
+g2 = ax.plot_surface(0.5, yy, zz, alpha=0.2, color='red')
+
+g0 = ax.scatter(x, y1, z)
+g1 = ax.scatter(x, y2, z)
+plt.legend((g0, g1), (r'$\epsilon_v$', r'$\epsilon_x$'))
+
+plt.show()
+
+conv3 = conv[conv['N']==100]
+conv3 = conv3[conv3['sigma']==1]
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10,5))
+plt.xlabel(r'$\beta$')
+ax.set_ylabel(r"$\epsilon$")
+g0 = plt.scatter(x=conv3['beta'], y=conv3['Vprec'])
+g1 = plt.scatter(x=conv3['beta'], y=conv3['modX'])
+plt.legend((g0, g1), (r'$\epsilon_v$', r'$\epsilon_x$'))
+plt.axvline(0.5, 0, 1,color='Red')
+plt.show()
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(10,5))
+plt.xlabel(r'$\beta$')
+ax.set_ylabel(r"$\log\epsilon$")
+g0 = plt.scatter(x=conv3['beta'], y=conv3['Vprec'])
+g1 = plt.scatter(x=conv3['beta'], y=conv3['modX'])
+plt.legend((g0, g1), (r'$\epsilon_v$', r'$\epsilon_x$'))
+ax.set(yscale="log")
+plt.axvline(0.5, 0, 1,color='Red')
+plt.show()
