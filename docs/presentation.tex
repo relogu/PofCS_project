@@ -154,7 +154,8 @@
 	\end{columns}
 	\end{minipage}
 	\begin{center}
-		Parameters: $k=100$, $\sigma=1$, \# iterations fixed, $\beta$ varying
+		Parameters: $k=100$, $\sigma=1$, $\beta$ varying\\
+		max \# iterations = 5000, accepted convergence at $10^{-5}$
 	\end{center}
 \end{frame}
 \begin{frame}{Trend of Convergence increasing $k$}
@@ -169,7 +170,8 @@
 	\end{columns}
 	\end{minipage}
 	\begin{center}
-		Parameters: $k$ varying, $\sigma=1$, \# iterations fixed, $\beta=1/2$
+		Parameters: $k$ varying, $\sigma=1$, $\beta=1/2$\\
+		max \# iterations = 100
 	\end{center}
 \end{frame}
 \begin{frame}{Influence of $k$}
@@ -184,7 +186,8 @@
 	\end{columns}
 	\end{minipage}
 	\begin{center}
-		Parameters: $k$ varying, $\sigma=1$ fixed, \# iterations $\propto$ $k$, $\beta=0.4$
+		Parameters: $k$ varying, $\sigma=1$ fixed, $\beta=0.4$\\
+		max \# iterations $\propto$ $k$ to let the system reach convergence
 	\end{center}
 \end{frame}
 \begin{frame}{Influence of $\sigma$}
@@ -199,7 +202,8 @@
 	\end{columns}
 	\end{minipage}
 	\begin{center}
-		Parameters: $k=100$, $\sigma$ varying, \# iterations fixed, $\beta=0.4$
+		Parameters: $k=100$, $\sigma$ varying, $\beta=0.4$\\
+		max \# iterations = 1000
 	\end{center}
 \end{frame}
 
@@ -208,12 +212,17 @@
 	\begin{itemize}
 		\item Convergence not so sharp
 		\vspace{0.5cm}
+		\item Does not converge at very large $k$, unless the convergence criteria are tuned accordingly
+		\vspace{0.5cm}
 		\item Critical state fulfills the expectations
 		\vspace{0.5cm}
 		\item Good behavior of the characteristics of the flocking state
-		\vspace{0.5cm}
-		\item Does not converge at very large $k$, unless the convergence criteria are tuned accordingly
 	\end{itemize}
+\end{frame}
+
+\begin{frame}{}
+	The end,\\
+	Thanks for the attention
 \end{frame}
 
 \end{document}
