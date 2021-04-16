@@ -261,7 +261,7 @@ Finally the authors of \cite{CuckerSmale} proved the following theorem
 Looking a bit deeper inside the model, by following the graph theory view, it is notable that
 the Laplacian $L_x$ gives us many information about the structure of the graph $G$ described
 by the adjacency matrix $A$. $L_x$ is symmetric, positive semi-definite and can be used to 
-build the energy function of the flock. Infact, by noting that
+build the energy function of the flock. In fact, by noting that
 \begin{equation}
 	\label{eq6}
 	\forall v \in \mathbf{E}^3, L_x(v,...,v)=0,
@@ -294,7 +294,7 @@ where the new parameter $\sigma$ must be strictly positive, and they gave the co
 	H<\frac{\sigma^{2\beta}}{(k-1)\sqrt{k}},
 \end{equation}
 where $k$ is the number of birds in the flock.
-Here $\sigma$ respresent simply a scaling parameter. In fact letting by $X_i=\frac{x_i}{\sigma}$,
+Here $\sigma$ represent simply a scaling parameter. In fact letting by $X_i=\frac{x_i}{\sigma}$,
 $\tau=\sigma^{-2\beta}t$, and $V_i=\frac{dX_i}{d\tau}=\sigma^{2\beta-1}v_i$,  the system becomes
 \begin{align}
 \label{eq11}
@@ -370,7 +370,7 @@ However the program allows to modify the value of \verb|epsilon|.
 %###############################################
 \section {Results}
 The focus of the simulation was in verifying the theorem and secondly
-in underlying the dependence between the charachteristics of the flocking state
+in underlying the dependence between the characteristics of the flocking state
 and some of the parameters, especially $\sigma$, the scaling factor, and $k$, the number of
 birds in the flock.
 
@@ -385,7 +385,7 @@ all the following simulations, allows to reach the convergence to study the prop
 implicitly states that with large values of $k$ the convergence is not reached without waiting long or 
 relaxing a lot the value of \verb|epsilon|.
 As Fig.\ref{fig4} shows, if the \verb|max_iter = 100| and \verb|espilon = 1e-5| are kept fixed and 
-the number of birds $k$ is increased, the model does not converge exaclty. The result of Fig.\ref{fig4} is that
+the number of birds $k$ is increased, the model does not converge exactly. The result of Fig.\ref{fig4} is that
 maximal difference $d^{max}$ is of order unity as $v^{max}$ for higher value of $k$, while the requested precision
 is \verb|espilon = 1e-5|.
 
@@ -416,20 +416,20 @@ The dependence of the flocking state's features on $\sigma$ are shown in Fig.\re
 where on the vertical axis are represented
 the characteristics of the flocking state and in the horizontal axis the variable $\log\frac{1}{\sigma}$,
 chosen to highlight the logistic shape of the relation. The results fulfill the expectation, but with a
-larger range of variation tha starts, as expected, at $\sigma=1$ reaching $\sigma=10^3$.
+larger range of variation that starts, as expected, at $\sigma=1$ reaching $\sigma=10^3$.
 
 %###############################################
 \section {Conclusions}
-The results of these anaysis give material to judge the applicability of this model to reality.
+The results of these analysis give material to judge the applicability of this model to reality.
 
 The dependence of the diameter $D$ and the common velocity $\widehat{v}$ of the flocking state 
 on the number of birds $k$, seems to respect the observations. Moreover, at higher values of $k$,
-in order to highlight these preperties, it was necessary to relax a lot the convergence criteria. This suggest
+in order to highlight these properties, it was necessary to relax a lot the convergence criteria. This suggest
 that with very large values of $k$, the convergence is reached in a very long unreasonable time, 
 and means that the model is not reliable.
 
 The influence of $\sigma$ on the 
-charachteristics of the flocking state suggests that different, in the sense of $\sigma$, sets 
+characteristics of the flocking state suggests that different, in the sense of $\sigma$, sets 
 of birds should produce in the same way a flocking state, different in scale. The physical meaning of $\sigma$
 could thus be related to a cognitive or language feature of birds' specie. 
 Nature suggests that different bird's specie produce (or not) different flocking states. With this
@@ -459,7 +459,7 @@ systems with a flocking state and shows some interesting features when looking d
         the value of $\beta=0.5$ in both. The green lines represent the value of 
         $\left\Vert d^{max}\right\Vert(\beta=0.5)$ in (a), and 
         $\left\Vert v^{max}\right\Vert(\beta=0.5)$ in (b).
-        The verical axis are in logarithmic scale.}
+        The vertical axis are in logarithmic scale.}
     \label{fig1}
 \end{figure}
 \begin{figure}[hb]
@@ -471,7 +471,7 @@ systems with a flocking state and shows some interesting features when looking d
         \includegraphics[width=0.45\textwidth, keepaspectratio]{../images/v_conv_N.png}
     }
     \caption{Here are shown the convergence values reached at the last iteration against the 
-        number of birds $k$ of the model. The values for the coonvergence criteria 
+        number of birds $k$ of the model. The values for the convergence criteria 
          are kept fixed. The values of the parameters of the model are 
         kept fixed to $\sigma=1$, $\beta=0.5$, $k=10$.
         The vertical axis are in logarithmic scale. In (a) is plotted the convergence coefficient w.r.t.

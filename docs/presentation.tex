@@ -12,6 +12,7 @@
   \usefonttheme{serif}  % or try serif, structurebold, ... (deafult)
   \setbeamertemplate{navigation symbols}{}
   \setbeamertemplate{caption}[numbered]
+  \setbeameroption{show notes} %un-comment to see the notes
 } 
 
 \usepackage[english]{babel}
@@ -43,13 +44,17 @@
 \begin{column}{0.30\textwidth}
 \begin{itemize}
   \item Emergence
-  \vspace{0.5cm}
-  \item Self-Organization
-  \vspace{0.5cm}
-  \item Scale free systems\\ and power laws
+  \vspace{0.2cm}
+  \item Internal interactions \\and scale  laws
+  \vspace{0.2cm}
+  \item Dynamical phase transitions
+  \vspace{0.2cm}
+  \item Limiting process
 \end{itemize}
 \end{column}
 \begin{column}{0.65\textwidth}
+	\vspace*{0.6cm}
+	\centering
 \includegraphics[width=\textwidth, keepaspectratio]{../images/flock_image.jpeg}
 \end{column}
 \end{columns}
@@ -70,8 +75,9 @@
 		\end{itemize}
 	\end{column}
 	\begin{column}{0.50\textwidth}
-		\movie[autostart,loop,externalviewer]{{\includegraphics[width=0.65\textheight, keepaspectratio]{../images/screen_for_ani_N50.mp4.png}}}
-		{../images/animation_N50.mp4}
+		\begin{center}
+		\movie[loop]{\includegraphics[width=\textwidth, keepaspectratio]{../images/screen_for_ani_N50.mp4.png}}{../images/animation_N50_crop.mp4}
+		\end{center}
 	\end{column}
 	\end{columns}
 	\end{minipage}
@@ -120,6 +126,20 @@
 	\end{columns}
 	\end{minipage}
 \end{frame}
+\begin{frame}{Theorem}
+	\begin{itemize}
+		\item for $\beta \le 1/2$ when $t\rightarrow\infty$
+		\begin{itemize}
+			\item velocities $v_i(t)\rightarrow\widehat{v}\in\mathbf{E}$ common
+			\item distances $x_i-x_j\rightarrow\widehat{x_{ij}}$ for $\forall i,j\leq k$
+		\end{itemize}
+		\vspace{0.5cm}
+		\item for $\beta > 1/2$ when $t\rightarrow\infty$
+		\begin{itemize}
+			\item convergence is reached under special initial conditions
+		\end{itemize}
+	\end{itemize}
+\end{frame}
 
 \section{Results}
 \begin{frame}{Representative convergence}
@@ -134,37 +154,7 @@
 	\end{columns}
 	\end{minipage}
 	\begin{center}
-		Parameters: $k=100$, $\sigma=1$, \# iterations fixed
-	\end{center}
-\end{frame}
-\begin{frame}{Influence of $\sigma$}
-	\begin{minipage}[0.95\textheight]{\textwidth}
-	\begin{columns}[T]
-	\begin{column}{0.50\textwidth}
-	\includegraphics[width=\textwidth, keepaspectratio]{../images/D_sigma.png}
-	\end{column}
-	\begin{column}{0.50\textwidth}
-	\includegraphics[width=\textwidth, keepaspectratio]{../images/v_sigma.png}
-	\end{column}
-	\end{columns}
-	\end{minipage}
-	\begin{center}
-		Parameters: $k=100$, $\sigma$ varying, \# iterations fixed
-	\end{center}
-\end{frame}
-\begin{frame}{Influence of $k$}
-	\begin{minipage}[0.95\textheight]{\textwidth}
-	\begin{columns}[T]
-	\begin{column}{0.50\textwidth}
-	\includegraphics[width=\textwidth, keepaspectratio]{../images/D_N.png}
-	\end{column}
-	\begin{column}{0.50\textwidth}
-	\includegraphics[width=\textwidth, keepaspectratio]{../images/v_N.png}
-	\end{column}
-	\end{columns}
-	\end{minipage}
-	\begin{center}
-		Parameters: $k$ varying, $\sigma=1$ fixed, \# iterations depending on $k$
+		Parameters: $k=100$, $\sigma=1$, \# iterations fixed, $\beta$ varying
 	\end{center}
 \end{frame}
 \begin{frame}{Trend of Convergence increasing $k$}
@@ -179,9 +169,40 @@
 	\end{columns}
 	\end{minipage}
 	\begin{center}
-		Parameters: $k$ varying, $\sigma=1$, \# iterations fixed
+		Parameters: $k$ varying, $\sigma=1$, \# iterations fixed, $\beta=1/2$
 	\end{center}
 \end{frame}
+\begin{frame}{Influence of $k$}
+	\begin{minipage}[0.95\textheight]{\textwidth}
+	\begin{columns}[T]
+	\begin{column}{0.50\textwidth}
+	\includegraphics[width=\textwidth, keepaspectratio]{../images/D_N.png}
+	\end{column}
+	\begin{column}{0.50\textwidth}
+	\includegraphics[width=\textwidth, keepaspectratio]{../images/v_N.png}
+	\end{column}
+	\end{columns}
+	\end{minipage}
+	\begin{center}
+		Parameters: $k$ varying, $\sigma=1$ fixed, \# iterations $\propto$ $k$, $\beta=0.4$
+	\end{center}
+\end{frame}
+\begin{frame}{Influence of $\sigma$}
+	\begin{minipage}[0.95\textheight]{\textwidth}
+	\begin{columns}[T]
+	\begin{column}{0.50\textwidth}
+	\includegraphics[width=\textwidth, keepaspectratio]{../images/D_sigma.png}
+	\end{column}
+	\begin{column}{0.50\textwidth}
+	\includegraphics[width=\textwidth, keepaspectratio]{../images/v_sigma.png}
+	\end{column}
+	\end{columns}
+	\end{minipage}
+	\begin{center}
+		Parameters: $k=100$, $\sigma$ varying, \# iterations fixed, $\beta=0.4$
+	\end{center}
+\end{frame}
+
 \section{Conclusions}
 \begin{frame}{Conclusions}
 	\begin{itemize}
@@ -189,7 +210,7 @@
 		\vspace{0.5cm}
 		\item Critical state fulfills the expectations
 		\vspace{0.5cm}
-		\item Good behaviour of the charcteristics of the flocking state
+		\item Good behavior of the characteristics of the flocking state
 		\vspace{0.5cm}
 		\item Does not converge at very large $k$, unless the convergence criteria are tuned accordingly
 	\end{itemize}
