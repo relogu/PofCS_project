@@ -22,3 +22,6 @@ relation.tex
 
 *.mp4
 omp_program
+
+*.tex
+*.pdfpc
